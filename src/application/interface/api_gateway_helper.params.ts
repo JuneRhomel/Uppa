@@ -1,6 +1,5 @@
-
+import { Request, Response } from 'express';
 export default interface ApiGatewayHelperParams {
-  usecase: any;
-  context: any;
-  event: any;
+  req: Request;
+  res: Response;
 }

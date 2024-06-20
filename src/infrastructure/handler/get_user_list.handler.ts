@@ -1,0 +1,38 @@
+import PaginationDto from "../../application/dto/pagination.dto";
+import ApiGatewayHelperParams from "../../application/interface/api_gateway_helper.params";
+import GetUserListEntity from "../../domain/entity/get_user_list.entity";
+import Failure from "../../domain/failure/failure";
+import GetUsersListUseCase from "../../domain/use_case/get_user_list/get_user_list.use_case";
+
+export default async function getUserListHandler({ req }: ApiGatewayHelperParams): Promise<GetUserListEntity | Failure> {
+    try {
+        const { 
+            page = 1, 
+            numberOfRows = 10, 
+            search = '', 
+            columns = '', 
+            sortBy = '', 
+            sortOrder = '', 
+            filters = '' 
+        }: PaginationDto = req.query as any;
+
+        const response = await GetUsersListUseCase({
+            database: 'account',
+            page,
+            numberOfRows,
+            search,
+            columns,
+            sortBy,
+            sortOrder,
+            filters 
+        });
+
+        if (response instanceof Failure) {
+            return response;
+        }
+
+        return response;
+    } catch (error) {
+        return new Failure('Failed to get users', error, 500);
+    }
+}
