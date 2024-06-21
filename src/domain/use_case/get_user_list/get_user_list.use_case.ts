@@ -4,11 +4,12 @@ import GetUserListEntity from "../../entity/get_user_list.entity";
 import Failure from "../../failure/failure";
 import GetUserUseCaseParams from "./interface/get_user_list_use_case.params";
 
-export default async function GetUserListUseCase({ database, page, numberOfRows, search, columns, sortBy, sortOrder, filters }: GetUserUseCaseParams): Promise<GetUserListEntity | Failure> {
+export default async function GetUserListUseCase({ page, numberOfRows, search, columns, sortBy, sortOrder, filters }: GetUserUseCaseParams): Promise<GetUserListEntity | Failure> {
     try {
         const destructureColumns = columns.split(',');
         const destructureFilters = filters.split(',');
         const table = 'account';
+        const database = "uppa_accounts";
         const userEntities = await GetListDataSource({ database, table, page, numberOfRows, search, columns: destructureColumns, sortBy, sortOrder, filters: destructureFilters });
         const userTotalListRow = await GetTotalListRowsDataSource({ database, table });
 

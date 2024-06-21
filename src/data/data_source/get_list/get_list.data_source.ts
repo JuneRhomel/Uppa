@@ -21,7 +21,7 @@ export default async function GetListDataSource({
         const sortCondition = `${sortBy} ${sortOrder}`;
         const query = `
             SELECT * FROM ${database}.${table} 
-            WHERE is_deleted = 0 
+            WHERE delated_at IS NULL
             AND (${searchCondition})
             ${filters.pop() ? `${filterConditions}` : ''}
             ORDER BY ${sortCondition}
@@ -30,6 +30,7 @@ export default async function GetListDataSource({
         const data = await SqlQuery(query);
         return data;
     } catch (error) {
+        console.log(error)
         return new Failure('Failed in get users data source', error, 500);
     }
 }

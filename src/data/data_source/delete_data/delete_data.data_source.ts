@@ -4,8 +4,11 @@ import DeleteDataDataSourceParams from "./interface/delete_data_data_source.para
 
 export default async function DeleteDataDataSource({ database, table, id }: DeleteDataDataSourceParams): Promise<void | Failure> {
     try {
-        const query = `UPDATE ${database}.${table} SET is_deleted = 1 WHERE id = ${id};`;
-        await SqlQuery(query);
+        const dateTime = new Date().toISOString()
+        const query = `UPDATE ${database}.${table} SET delated_at = '${dateTime}' WHERE id = ${id};`;
+
+        const result = await SqlQuery(query);
+        console.log(result);
     } catch (error) {
         return new Failure('Failed in delete data data source', error, 500);
     }

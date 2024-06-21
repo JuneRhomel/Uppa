@@ -4,7 +4,7 @@ import DeleteUserUseCaseParams from "./interface/delete_user_use_case.params";
 
 export default async function DeleteUserUseCase({ id }: DeleteUserUseCaseParams): Promise<void | Failure> {
     try {
-        const deleteData = await DeleteDataDataSource({ database: 'account', table: 'account', id });
+        const deleteData = await DeleteDataDataSource({ database: 'uppa_accounts', table: 'account', id });
         if (deleteData instanceof Failure) {
             return deleteData;
         }

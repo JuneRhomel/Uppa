@@ -1,5 +1,4 @@
 export default interface GetUserListUseCaseParams {
-    database: string,
     page: number,
     numberOfRows: number,
     search: string,

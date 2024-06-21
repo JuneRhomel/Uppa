@@ -1,35 +1,36 @@
 import express = require('express');
+const bodyParser = require('body-parser');
 import { Request, Response } from 'express';
 import GetUserListHandler from './infrastructure/handler/get_user_list.handler';
-import Failure from './domain/failure/failure';
 import DeleteUserHadler from './infrastructure/handler/delete_user.handler';
 import GetUserHandler from './infrastructure/handler/get_user.handler';
+import PostUserHandler from './infrastructure/handler/post_user.handler';
+import PatchUserHandler from './infrastructure/handler/patch_user.handler';
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(bodyParser.json());
+
 
 app.get('/users', async (req: Request, res: Response) => {
-    const response = await GetUserListHandler({ req, res });
-    if (response instanceof Failure) {
-        res.status(response.statusCode).send(response.message);
-    }
-    res.status(201).send(response);
+    await GetUserListHandler({ req, res });
 });
 
 app.delete('/users/:id', async (req: Request, res: Response) => {
-    const response = await DeleteUserHadler({ req, res });
-    if (response instanceof Failure) {
-        res.status(response.statusCode).send(response.message);
-    }
-    res.status(201).send(response);
+    await DeleteUserHadler({ req, res });
 })
 
 app.get('/users/:id', async (req: Request, res: Response) => {
-    const response = await GetUserHandler({ req, res });
-    if (response instanceof Failure) {
-        res.status(response.statusCode).send(response.message);
-    }
-    res.status(201).send(response);
+    await GetUserHandler({ req, res });
+
+})
+
+app.post('/users', async (req: Request, res: Response) => {
+    await PostUserHandler({ req, res });
+})
+
+app.patch('/users/:id', async (req: Request, res: Response) => {
+    await PatchUserHandler({ req, res });
 })
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
