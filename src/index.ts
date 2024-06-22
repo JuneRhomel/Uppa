@@ -1,11 +1,11 @@
 import express = require('express');
 const bodyParser = require('body-parser');
 import { Request, Response } from 'express';
-import GetUserListHandler from './infrastructure/handler/get_user_list.handler';
-import DeleteUserHadler from './infrastructure/handler/delete_user.handler';
-import GetUserHandler from './infrastructure/handler/get_user.handler';
-import PostUserHandler from './infrastructure/handler/post_user.handler';
-import PatchUserHandler from './infrastructure/handler/patch_user.handler';
+import GetUserListHandler from './infrastructure/handler/user/get_user_list.handler';
+import DeleteUserHadler from './infrastructure/handler/user/delete_user.handler';
+import GetUserHandler from './infrastructure/handler/user/get_user.handler';
+import PostUserHandler from './infrastructure/handler/user/post_user.handler';
+import PatchUserHandler from './infrastructure/handler/user/patch_user.handler';
 
 const app = express();
 const port = process.env.PORT || 3000;

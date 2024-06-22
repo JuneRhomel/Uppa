@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import ApiGatewayHelperParams from "../../application/interface/api_gateway_helper.params";
-import Failure from "../../domain/failure/failure";
-import DeleteUserUseCase from "../../domain/use_case/delete_user/delete_user.use_case";
+import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
+import Failure from "../../../domain/failure/failure";
+import DeleteUserUseCase from "../../../domain/use_case/delete_user/delete_user.use_case";
 
 export default async function DeleteUserHadler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {

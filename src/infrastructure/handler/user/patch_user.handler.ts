@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import ApiGatewayHelperParams from "../../application/interface/api_gateway_helper.params";
-import Failure from "../../domain/failure/failure";
-import PatchUserUseCase from '../../domain/use_case/patch_user/patch_user.use_case';
+import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
+import Failure from "../../../domain/failure/failure";
+import PatchUserUseCase from '../../../domain/use_case/patch_user/patch_user.use_case';
 
 export default async function PatchUserHandler({ req, res }: ApiGatewayHelperParams): Promise<void | Response> {
     try {

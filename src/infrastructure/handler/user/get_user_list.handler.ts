@@ -1,8 +1,8 @@
 import { Response } from 'express';
-import PaginationDto from "../../application/dto/pagination.dto";
-import ApiGatewayHelperParams from "../../application/interface/api_gateway_helper.params";
-import Failure from "../../domain/failure/failure";
-import GetUsersListUseCase from "../../domain/use_case/get_user_list/get_user_list.use_case";
+import PaginationDto from "../../../application/dto/pagination.dto";
+import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
+import Failure from "../../../domain/failure/failure";
+import GetUsersListUseCase from "../../../domain/use_case/get_user_list/get_user_list.use_case";
 
 export default async function getUserListHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {

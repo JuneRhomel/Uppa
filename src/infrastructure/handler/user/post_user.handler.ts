@@ -1,8 +1,8 @@
 import { Response } from 'express';
-import ApiGatewayHelperParams from "../../application/interface/api_gateway_helper.params";
-import ValidationFailure from "../../domain/failure/common/validation";
-import Failure from "../../domain/failure/failure";
-import PostUserUseCase from "../../domain/use_case/post_user/post_user.use_case";
+import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
+import ValidationFailure from "../../../domain/failure/common/validation";
+import Failure from "../../../domain/failure/failure";
+import PostUserUseCase from "../../../domain/use_case/post_user/post_user.use_case";
 
 export default async function PostUserHandler({ req, res }: ApiGatewayHelperParams): Promise<void | Response> {
     try {
