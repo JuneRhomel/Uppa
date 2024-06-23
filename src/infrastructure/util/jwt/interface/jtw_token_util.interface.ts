@@ -1,5 +1,5 @@
 export default interface JwtTokenParams {
-    userId: number;
+    userId: number,
     email: string;
     accountCode: string;
 }
