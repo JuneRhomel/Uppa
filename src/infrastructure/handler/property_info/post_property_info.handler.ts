@@ -4,7 +4,7 @@ import { plainToInstance } from "class-transformer";
 
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import PropertyInfoEntity from '../../../domain/entity/property_info.entity';
-import PostPropertyInfoUseCase from '../../../domain/use_case/get_property_info/post_property_info.use_case';
+import PostPropertyInfoUseCase from '../../../domain/use_case/post_property_info/post_property_info.use_case';
 import Failure from '../../../domain/failure/failure';
 import AuthModel from '../../../data/model/auth/auth.model';
 

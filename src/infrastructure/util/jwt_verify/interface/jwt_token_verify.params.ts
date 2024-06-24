@@ -12,7 +12,7 @@ export default interface JwtTokenVerifyParams {
 declare global {
     namespace Express {
         interface Request {
-            userAuth?: any; // You can replace `any` with the actual type of the `userAuth` property
+            userAuth?: any; 
         }
     }
 }

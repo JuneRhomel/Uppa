@@ -11,8 +11,7 @@ export default async function PostDataDataSource({
     try {
         const fillterData = Object.fromEntries(Object.entries(data).filter(([key, value]) => value !== undefined && value !== null && value !== ''));
         fillterData.created_by = authModel.userId
-        console.log(authModel.userId)
-
+        fillterData.created_at = new Date().toISOString()
         const columnNames = Object.keys(fillterData);
         const values = Object.values(fillterData);
         const escapedValues = values.map(val => (typeof val === 'string') ? `'${val}'` : val).join(', ');

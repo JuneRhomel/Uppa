@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import PostAuthHandler from './infrastructure/handler/auth/post_auth.handler';
 import VerifyToken from './infrastructure/util/jwt_verify/jwt_token_verify';
 import PostPropertyInfoHandler from './infrastructure/handler/property_info/post_property_info.handler';
+import PostUnitHandler from './infrastructure/handler/unit/post_unit.handler';
 const { PORT } = require('./infrastructure/config/config');
 
 const bodyParser = require('body-parser');
@@ -24,6 +25,10 @@ app.post('/auth', async (req: Request, res: Response) => {
 
 app.post("/propertyinfo", async (req: Request, res: Response) => {
     await PostPropertyInfoHandler({ req, res });
+})
+
+app.post("/unit", async (req: Request, res: Response) => {
+    await PostUnitHandler({ req, res });
 })
 
 app.listen(port, () => {
