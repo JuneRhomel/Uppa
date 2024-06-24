@@ -1,12 +1,8 @@
 import express = require('express');
 import { Request, Response } from 'express';
-import GetUserListHandler from './infrastructure/handler/user/get_user_list.handler';
-import DeleteUserHadler from './infrastructure/handler/user/delete_user.handler';
-import GetUserHandler from './infrastructure/handler/user/get_user.handler';
-import PostUserHandler from './infrastructure/handler/user/post_user.handler';
-import PatchUserHandler from './infrastructure/handler/user/patch_user.handler';
 import PostAuthHandler from './infrastructure/handler/auth/post_auth.handler';
 import VerifyToken from './infrastructure/util/jwt_verify/jwt_token_verify';
+import PostPropertyInfoHandler from './infrastructure/handler/property_info/post_property_info.handler';
 const { PORT } = require('./infrastructure/config/config');
 
 const bodyParser = require('body-parser');
@@ -22,30 +18,14 @@ app.use(async function (req, res, next) {
     }
 })
 
-app.get('/users', async (req: Request, res: Response) => {
-    await GetUserListHandler({ req, res });
-});
-
-app.delete('/users/:id', async (req: Request, res: Response) => {
-    await DeleteUserHadler({ req, res });
-})
-
-app.get('/users/:id', async (req: Request, res: Response) => {
-    await GetUserHandler({ req, res });
-
-})
-
-app.post('/users', async (req: Request, res: Response) => {
-    await PostUserHandler({ req, res });
-})
-
-app.patch('/users/:id', async (req: Request, res: Response) => {
-    await PatchUserHandler({ req, res });
-})
-
 app.post('/auth', async (req: Request, res: Response) => {
     await PostAuthHandler({ req, res });
 })
+
+app.post("/propertyinfo", async (req: Request, res: Response) => {
+    await PostPropertyInfoHandler({ req, res });
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

@@ -1,4 +1,5 @@
 import Failure from "../../../domain/failure/failure";
+import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import SqlQuery from "../../../sql/database_pool.sql";
 import GetDataDataSourceParams from "./interface/get_data_data_source.params";
 
@@ -8,6 +9,6 @@ export default async function GetDataDataSource({ database, table, id }: GetData
         const data = await SqlQuery(query);
         return data;
     } catch (error) {
-        return new Failure('Failed in get data data source', error, 500);
+        return FailureMapperUtil(error)
     }
 }

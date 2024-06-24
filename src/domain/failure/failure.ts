@@ -1,12 +1,21 @@
-class Failure extends Error {
-  originalError: any;
-  statusCode: number;
-  constructor(message: string | undefined, originalError: any, statusCode = 500) {
-    super(message);
-    this.statusCode = statusCode;
-    this.name = "Failure";
-    this.originalError = originalError;
+export default class Failure {
+  public code: number;
+
+  public message: string;
+
+  public extra: any[] | undefined;
+
+  constructor({
+    code,
+    message,
+    extra,
+  }: {
+    code: number;
+    message: string;
+    extra?: any[] | undefined;
+  }) {
+    this.code = code;
+    this.message = message;
+    this.extra = extra;
   }
 }
-
-export default Failure;

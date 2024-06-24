@@ -1,4 +1,5 @@
 import Failure from "../../../domain/failure/failure";
+import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import SqlQuery from "../../../sql/database_pool.sql";
 import DeleteDataDataSourceParams from "./interface/delete_data_data_source.params";
 
@@ -10,6 +11,6 @@ export default async function DeleteDataDataSource({ database, table, id }: Dele
         const result = await SqlQuery(query);
         console.log(result);
     } catch (error) {
-        return new Failure('Failed in delete data data source', error, 500);
+        return FailureMapperUtil(error)
     }
 }

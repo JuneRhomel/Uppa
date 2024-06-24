@@ -17,6 +17,7 @@ export default async function VerifyToken({ req, res, next }: JwtTokenVerifyPara
             if (err) {
                 return res.sendStatus(403);
             } else {
+                req.userAuth = decoded;
                 next();
             }
         });

@@ -20,7 +20,7 @@ export default async function PostAuthHandler({ req, res }: ApiGatewayHelperPara
 
 
         if (responseAuthUseCase instanceof Failure) {
-            return res.status(responseAuthUseCase.statusCode).json({ error: responseAuthUseCase.message });
+            return res.status(400).json(responseAuthUseCase);
         }
 
         return res

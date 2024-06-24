@@ -1,4 +1,5 @@
 import Failure from "../../../domain/failure/failure";
+import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import SqlQuery from "../../../sql/database_pool.sql";
 import AuthResponseModel from "../../model/auth/auth_response.model";
 
@@ -10,9 +11,9 @@ export default async function PostAuthDataSource({ email, password, accountCode 
         const params = [email, password, accountCode]
 
         const result = await SqlQuery(query, params)
-        
+
         if (result.length === 0) {
-            return new Failure('Invalid email or password', null, 400);
+            throw new Error('Invalid credentials')
         }
         const user = result.pop()
 
@@ -24,6 +25,6 @@ export default async function PostAuthDataSource({ email, password, accountCode 
             user.account_code
         )
     } catch (error) {
-        return new Failure('Failed to post data', error, 500);
+        return FailureMapperUtil(error)
     }
 }

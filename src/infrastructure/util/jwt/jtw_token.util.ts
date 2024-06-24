@@ -1,4 +1,5 @@
 import Failure from "../../../domain/failure/failure";
+import FailureMapperUtil from "../failure_mapper/failure_mapper.util";
 import JwtTokenParams from "./interface/jtw_token_util.interface";
 const { JWTSECRETKEY } = require('../../config/config');
 
@@ -19,6 +20,6 @@ export default async function JtwToken({ userId, email, accountCode }: JwtTokenP
 
         return token
     } catch (error) {
-        return new Failure("Failed to generate token", error, 500)
+        return FailureMapperUtil(error)
     }
 } 

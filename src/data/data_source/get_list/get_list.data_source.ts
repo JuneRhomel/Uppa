@@ -1,4 +1,5 @@
 import Failure from "../../../domain/failure/failure";
+import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import SqlQuery from "../../../sql/database_pool.sql";
 import GetUserDataSourceParams from "./interface/get_list_data_source.params";
 
@@ -30,7 +31,6 @@ export default async function GetListDataSource({
         const data = await SqlQuery(query);
         return data;
     } catch (error) {
-        console.log(error)
-        return new Failure('Failed in get users data source', error, 500);
+        return FailureMapperUtil(error)
     }
 }
