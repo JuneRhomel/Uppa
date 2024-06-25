@@ -2,7 +2,7 @@ import { Response } from 'express';
 import UserAuthDto from "../../../application/dto/user_auth.dto";
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import Failure from "../../../domain/failure/failure";
-import PostAuthUseCase from "../../../domain/use_case/post_auth/post_auth.use_case";
+import PostAuthUseCase from "../../../domain/use_case/auth/post_auth/post_auth.use_case";
 
 export default async function PostAuthHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {

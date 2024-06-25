@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 
-export default class PaginationEntity {
+export default class PaginationModel {
     @Expose()
     public search: string;
 
@@ -11,7 +11,7 @@ export default class PaginationEntity {
     public numberOfRows: number;
 
     @Expose()
-    public columns: string;
+    public columns: string[];
 
     @Expose()
     public sortBy: string;
@@ -20,16 +20,20 @@ export default class PaginationEntity {
     public sortOrder: "ASC" | "DESC" | "";
 
     @Expose()
-    public filters: string;
+    public filters: string[];
+
+    @Expose()
+    public tabel: string;
 
     constructor(
         search: string,
         page: number,
         numberOfRows: number,
-        columns: string,
+        columns: string[],
         sortBy: string,
         sortOrder: "ASC" | "DESC" | "",
-        filters: string
+        filters: string[],
+        tabel: string
     ) {
         this.sortBy = sortBy;
         this.sortOrder = sortOrder;
@@ -38,5 +42,6 @@ export default class PaginationEntity {
         this.numberOfRows = numberOfRows;
         this.columns = columns;
         this.filters = filters;
+        this.tabel = tabel
     }
 }

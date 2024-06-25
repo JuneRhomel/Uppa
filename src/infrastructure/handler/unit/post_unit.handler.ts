@@ -5,7 +5,7 @@ import ApiGatewayHelperParams from "../../../application/interface/api_gateway_h
 import UnitDto from '../../../application/dto/unit.dto';
 import UnitEntity from '../../../domain/entity/unit.entity';
 import AuthModel from '../../../data/model/auth/auth.model';
-import PostUnitUseCase from '../../../domain/use_case/post_unit/post_unit.use_case';
+import PostUnitUseCase from '../../../domain/use_case/unit/post_unit/post_unit.use_case';
 import Failure from '../../../domain/failure/failure';
 
 export default async function PostUnitHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {

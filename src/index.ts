@@ -4,6 +4,7 @@ import PostAuthHandler from './infrastructure/handler/auth/post_auth.handler';
 import VerifyToken from './infrastructure/util/jwt_verify/jwt_token_verify';
 import PostPropertyInfoHandler from './infrastructure/handler/property_info/post_property_info.handler';
 import PostUnitHandler from './infrastructure/handler/unit/post_unit.handler';
+import GetUnitHandler from './infrastructure/handler/unit/get_unit.handler';
 const { PORT } = require('./infrastructure/config/config');
 
 const bodyParser = require('body-parser');
@@ -29,6 +30,9 @@ app.post("/propertyinfo", async (req: Request, res: Response) => {
 
 app.post("/unit", async (req: Request, res: Response) => {
     await PostUnitHandler({ req, res });
+})
+app.get("/unit", async (req: Request, res: Response) => {
+    await GetUnitHandler({ req, res });
 })
 
 app.listen(port, () => {

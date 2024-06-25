@@ -1,9 +1,9 @@
 import { validate } from "class-validator";
 import GetPropertyInfoUseCaseParams from "./interface/post_property_info_use_case.params";
-import ValidationFailure from "../../failure/common/validation";
-import Failure from "../../failure/failure";
-import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
-import PostDataDataSource from "../../../data/data_source/post_data/post_data.data_source";
+import ValidationFailure from "../../../failure/common/validation";
+import Failure from "../../../failure/failure";
+import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
+import PostDataDataSource from "../../../../data/data_source/post_data/post_data.data_source";
 
 export default async function PostPropertyInfoUseCase({ authModel, propertyInfoEntity }: GetPropertyInfoUseCaseParams): Promise<void | Failure> {
 
