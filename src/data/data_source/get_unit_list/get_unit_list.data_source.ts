@@ -7,7 +7,7 @@ import GetUnitListDataSourceParams from "./interface/get_unit_list_data_source,p
 export default async function getUnitList({
     paginationModel,
     authModel
-}: GetUnitListDataSourceParams): Promise<UnitModel | Failure> {
+}: GetUnitListDataSourceParams): Promise<UnitModel[] | Failure> {
     try {
         const { search, filters, page, numberOfRows, columns, sortBy, sortOrder } = paginationModel;
         const { accountCode } = authModel;

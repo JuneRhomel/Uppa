@@ -1,5 +1,7 @@
+import AuthModel from "../../../model/auth/auth.model"
+
 export default interface DeleteDataDataSourceParams {
-    database: string,
+    authModel: AuthModel;
     table: string,
     id: number
 }

@@ -1,7 +1,7 @@
+import AuthModel from "../../../model/auth/auth.model"
 
 export default interface PatchDataDataSourceParams {
-    database: string
+    authModel: AuthModel
     table: string
     data: any,
-    id: number
 }

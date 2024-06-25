@@ -3,13 +3,12 @@ import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failu
 import SqlQuery from "../../../sql/database_pool.sql";
 import DeleteDataDataSourceParams from "./interface/delete_data_data_source.params";
 
-export default async function DeleteDataDataSource({ database, table, id }: DeleteDataDataSourceParams): Promise<void | Failure> {
+export default async function DeleteDataDataSource({ authModel, table, id }: DeleteDataDataSourceParams): Promise<void | Failure> {
     try {
         const dateTime = new Date().toISOString()
-        const query = `UPDATE ${database}.${table} SET delated_at = '${dateTime}' WHERE id = ${id};`;
+        const query = `UPDATE ${authModel.accountCode}.${table} SET deleted_at = '${dateTime}', deleted_by = ${authModel.userId} WHERE id = ${id};`;
 
-        const result = await SqlQuery(query);
-        console.log(result);
+        await SqlQuery(query);
     } catch (error) {
         return FailureMapperUtil(error)
     }

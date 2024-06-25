@@ -4,7 +4,10 @@ import PostAuthHandler from './infrastructure/handler/auth/post_auth.handler';
 import VerifyToken from './infrastructure/util/jwt_verify/jwt_token_verify';
 import PostPropertyInfoHandler from './infrastructure/handler/property_info/post_property_info.handler';
 import PostUnitHandler from './infrastructure/handler/unit/post_unit.handler';
+import GetUnitListHandler from './infrastructure/handler/unit/get_unit_list.handler';
 import GetUnitHandler from './infrastructure/handler/unit/get_unit.handler';
+import PatchUnitHandler from './infrastructure/handler/unit/patch_unit.handler';
+import DeleteUnitHandler from './infrastructure/handler/unit/delete_unit.handler';
 const { PORT } = require('./infrastructure/config/config');
 
 const bodyParser = require('body-parser');
@@ -32,8 +35,18 @@ app.post("/unit", async (req: Request, res: Response) => {
     await PostUnitHandler({ req, res });
 })
 app.get("/unit", async (req: Request, res: Response) => {
+    await GetUnitListHandler({ req, res });
+})
+app.get("/unit/:id", async (req: Request, res: Response) => {
     await GetUnitHandler({ req, res });
 })
+app.patch("/unit/:id", async (req: Request, res: Response) => {
+    await PatchUnitHandler({ req, res });
+})
+app.delete("/unit/:id", async (req: Request, res: Response) => {
+    await DeleteUnitHandler({ req, res });
+})
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

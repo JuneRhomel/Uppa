@@ -1,5 +1,7 @@
+import AuthModel from "../../../model/auth/auth.model"
+
 export default interface GetDataDataSourceParams {
-    database: string,
-    table: string,
-    id: number
+    authModel: AuthModel;
+    id: number;
+    table: string;
 }
