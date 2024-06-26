@@ -16,6 +16,8 @@ const port = PORT || 3000;
 app.use(bodyParser.json());
 
 app.use(async function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     if (req.url !== '/auth') {
         await VerifyToken({ req, res, next })
     } else {

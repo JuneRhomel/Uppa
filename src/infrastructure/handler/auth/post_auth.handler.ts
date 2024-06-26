@@ -26,13 +26,11 @@ export default async function PostAuthHandler({ req, res }: ApiGatewayHelperPara
         return res
             .status(201)
             .json({
-                success: true,
-                data: {
-                    userId: responseAuthUseCase.userId,
-                    email: responseAuthUseCase.email,
-                    accountCode: responseAuthUseCase.accountCode,
-                    token: responseAuthUseCase.token
-                },
+
+                userId: responseAuthUseCase.userId,
+                email: responseAuthUseCase.email,
+                accountCode: responseAuthUseCase.accountCode,
+                token: responseAuthUseCase.token
             });
 
     } catch (error) {

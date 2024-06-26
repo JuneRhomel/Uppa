@@ -1,3 +1,4 @@
+import AuthFailure from "../../../domain/failure/auth/auth.failure";
 import Failure from "../../../domain/failure/failure";
 import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import SqlQuery from "../../../sql/database_pool.sql";
@@ -13,8 +14,9 @@ export default async function PostAuthDataSource({ email, password, accountCode 
         const result = await SqlQuery(query, params)
 
         if (result.length === 0) {
-            throw new Error('Invalid credentials')
+            return new AuthFailure();
         }
+        console.log(result)
         const user = result.pop()
 
         return new AuthResponseModel(
