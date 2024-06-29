@@ -1,26 +1,29 @@
 import PostAuthDataSource from "../../../../data/data_source/post_auth/post_auth.data_source";
-import ValidationFailure from "../../../failure/common/validation";
 import PatchAuthUseCaseParams from "./interface/patch_auth_use_case.params";
 import Failure from "../../../failure/failure";
 import JtwToken from "../../../../infrastructure/util/jwt/jtw_token.util";
 import AuthModel from "../../../../data/model/auth/auth.model";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
+const md5 = require('md5');
 
 
 export default async function PostAuthUseCase(params: PatchAuthUseCaseParams): Promise<AuthModel | Failure> {
     try {
-        const {
+        let {
             email,
             password,
             accountCode
         } = params
+        
+        // Convert string password To md5
+        password = md5(password)
 
 
         const responseAuth = await PostAuthDataSource({
             email,
             password,
             accountCode
-        })  
+        })
         if (responseAuth instanceof Failure) {
             return responseAuth
         }

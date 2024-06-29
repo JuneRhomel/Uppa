@@ -14,6 +14,7 @@ export default async function PostPropertyInfoUseCase({ authModel, propertyInfoE
         if (propertyInfoErrorValidation.length > 0) {
             return new ValidationFailure({ extra: propertyInfoErrorValidation });
         }
+        
 
         const postPropertyInfo = await PostDataDataSource({ authModel, table: 'property_info', data: propertyInfoEntity });
         return postPropertyInfo;

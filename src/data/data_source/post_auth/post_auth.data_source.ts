@@ -16,7 +16,6 @@ export default async function PostAuthDataSource({ email, password, accountCode 
         if (result.length === 0) {
             return new AuthFailure();
         }
-        console.log(result)
         const user = result.pop()
 
         return new AuthResponseModel(

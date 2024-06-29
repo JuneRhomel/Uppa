@@ -8,6 +8,9 @@ import GetUnitListHandler from './infrastructure/handler/unit/get_unit_list.hand
 import GetUnitHandler from './infrastructure/handler/unit/get_unit.handler';
 import PatchUnitHandler from './infrastructure/handler/unit/patch_unit.handler';
 import DeleteUnitHandler from './infrastructure/handler/unit/delete_unit.handler';
+import PostRegisterHandler from './infrastructure/handler/register/post_register.handler';
+import PatchPropertyInfoUseCas from './domain/use_case/property_info/patch_property_info/patch_propoerty.use_case';
+import PathcPropertyInfoHandler from './infrastructure/handler/property_info/patch_property_info.handler';
 const { PORT } = require('./infrastructure/config/config');
 
 const bodyParser = require('body-parser');
@@ -28,9 +31,12 @@ app.use(async function (req, res, next) {
 app.post('/auth', async (req: Request, res: Response) => {
     await PostAuthHandler({ req, res });
 })
-
+// Property
 app.post("/propertyinfo", async (req: Request, res: Response) => {
     await PostPropertyInfoHandler({ req, res });
+})
+app.patch("/propertyinfo", async (req: Request, res: Response) => {
+    await PathcPropertyInfoHandler({ req, res });
 })
 
 app.post("/unit", async (req: Request, res: Response) => {
@@ -49,6 +55,9 @@ app.delete("/unit/:id", async (req: Request, res: Response) => {
     await DeleteUnitHandler({ req, res });
 })
 
+app.post("/register", async (req: Request, res: Response) => {
+    await PostRegisterHandler({ req, res })
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

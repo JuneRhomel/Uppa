@@ -23,7 +23,6 @@ export default async function VerifyToken({ req, res, next }: JwtTokenVerifyPara
         });
 
     } catch (error) {
-
         return res.sendStatus(500);
     }
 }

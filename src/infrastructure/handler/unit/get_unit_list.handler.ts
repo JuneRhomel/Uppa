@@ -44,9 +44,10 @@ export default async function GetUnitListHandler({ req, res }: ApiGatewayHelperP
         if (response instanceof Failure) {
             return res.status(400).json(response)
         }
-        return res.status(201).json(response);
-    } catch (error) {
 
+        return res.status(201).json(response);
+        
+    } catch (error) {
         return res.sendStatus(500);
     }
 }
