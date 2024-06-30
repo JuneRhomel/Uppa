@@ -16,6 +16,7 @@ export default async function PatchPropertyInfoUseCase({ propertyInfoEntity, aut
         }
 
         const postPropertyInfo = await PatchDataDataSource({ authModel, table: 'property_info', data: propertyInfoEntity });
+        
         return postPropertyInfo;
 
 

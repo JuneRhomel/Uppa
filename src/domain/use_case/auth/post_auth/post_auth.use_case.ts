@@ -4,6 +4,7 @@ import Failure from "../../../failure/failure";
 import JtwToken from "../../../../infrastructure/util/jwt/jtw_token.util";
 import AuthModel from "../../../../data/model/auth/auth.model";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
+import JwtRefreshToken from "../../../../infrastructure/util/jwt_refresh_token/jwt_refresh_token.util";
 const md5 = require('md5');
 
 
@@ -14,9 +15,10 @@ export default async function PostAuthUseCase(params: PatchAuthUseCaseParams): P
             password,
             accountCode
         } = params
-        
+
         // Convert string password To md5
         password = md5(password)
+        console.log(password)
 
 
         const responseAuth = await PostAuthDataSource({

@@ -9,7 +9,6 @@ import GetUnitHandler from './infrastructure/handler/unit/get_unit.handler';
 import PatchUnitHandler from './infrastructure/handler/unit/patch_unit.handler';
 import DeleteUnitHandler from './infrastructure/handler/unit/delete_unit.handler';
 import PostRegisterHandler from './infrastructure/handler/register/post_register.handler';
-import PatchPropertyInfoUseCas from './domain/use_case/property_info/patch_property_info/patch_propoerty.use_case';
 import PathcPropertyInfoHandler from './infrastructure/handler/property_info/patch_property_info.handler';
 const { PORT } = require('./infrastructure/config/config');
 
@@ -17,6 +16,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = PORT || 3000;
 app.use(bodyParser.json());
+
 
 app.use(async function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
