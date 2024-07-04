@@ -5,7 +5,7 @@ import GetTotalListRowsDataSourceParams from "./interface/get_total_list_rows_da
 
 export default async function GetTotalListRowsDataSource({ database, table }: GetTotalListRowsDataSourceParams): Promise<number | Failure> {
     try {
-        const query = `SELECT COUNT(id) AS total FROM ${database}.${table} WHERE delated_at IS NULL;`;
+        const query = `SELECT COUNT(id) AS total FROM ${database}.${table} WHERE deleted_at IS NULL;`;
         const data = await SqlQuery(query);
         return data[0].total;
     } catch (error) {

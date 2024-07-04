@@ -18,18 +18,18 @@ export default async function getUnitList({
 
         const query = `
             SELECT 
-                unit.id,
-                unit.unit_name,
-                unit.unit_type_id,
-                list_unit_type.unit_type_name,
-                unit.unit_status_id,
-                list_unit_status.unit_status_name,
-                unit.created_at,
-                unit.updated_at,
-                unit.deleted_at,
-                unit.created_by,
-                unit.deleted_by,
-                unit.updated_by
+                unit.id as id,
+                unit.unit_name as unit_name,
+                unit.unit_type_id as unit_type_id,
+                list_unit_type.unit_type_name as unit_type_name,
+                unit.unit_status_id as unit_status_id,
+                list_unit_status.unit_status_name as unit_status_name,
+                unit.created_at as created_at,
+                unit.updated_at as updated_at,
+                unit.deleted_at as deleted_at,
+                unit.created_by as created_by,
+                unit.deleted_by as deleted_by,
+                unit.updated_by as updated_by
             FROM ${accountCode}.unit
             INNER JOIN ${accountCode}.list_unit_status 
                 ON unit.unit_status_id = list_unit_status.id
