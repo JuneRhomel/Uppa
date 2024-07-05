@@ -5,10 +5,10 @@ export default class PaginationDto {
   public search: string;
 
   @Expose()
-  public page: number;
+  public page: string;
 
   @Expose()
-  public numberOfRows: number;
+  public numberOfRows: string;
 
   @Expose()
   public columns: string;
@@ -24,8 +24,8 @@ export default class PaginationDto {
 
   constructor(
     search: string, 
-    page: number, 
-    numberOfRows: number, 
+    page: string, 
+    numberOfRows: string, 
     columns: string, 
     sortBy: string, 
     sortOrder: "ASC" | "DESC" | "",

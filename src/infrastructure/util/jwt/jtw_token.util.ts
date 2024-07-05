@@ -15,7 +15,7 @@ export default async function JtwToken({ userId, email, accountCode }: JwtTokenP
                 accountCode
             },
             JWTSECRETKEY,
-            { expiresIn: "1hr" }
+            { expiresIn: "24hr" }
         );
 
         return token

@@ -13,8 +13,7 @@ export default async function getUnitList({
         const { accountCode } = authModel;
 
         const searchColumns = columns.map(column => `${column} LIKE '%${search}%'`).join(' OR ');
-        const filterConditions = filters.map(filter => `${filter}`).join(' AND ');
-        const sortOrderCondition = `${sortBy} ${sortOrder}`;
+        const sortOrderCondition = `ORDER BY ${sortBy} ${sortOrder}`;
 
         const query = `
             SELECT 
@@ -36,10 +35,9 @@ export default async function getUnitList({
             INNER JOIN ${accountCode}.list_unit_type 
                 ON unit.unit_type_id = list_unit_type.id
             WHERE unit.deleted_at IS NULL
-            AND (${searchColumns})
-            ${filterConditions ? `AND ${filterConditions}` : ''}
-            ORDER BY ${sortOrderCondition}
-            LIMIT ${numberOfRows} OFFSET ${(page - 1) * numberOfRows};
+            ${search? `AND (${searchColumns})` : ''}
+            ${sortBy && sortOrder ? sortOrderCondition : ""}
+            LIMIT ${numberOfRows} OFFSET ${(page - 1) * numberOfRows}
         `;
 
         return await SqlQuery(query);

@@ -12,9 +12,18 @@ export default class UnitEntity {
     @Expose()
     @IsNumber()
     public unit_type_id: number;
+
     @Expose()
     @IsNumber()
     public unit_status_id: number;
+
+    @Expose()
+    @IsString()
+    public unit_type_name: string;
+
+    @Expose()
+    @IsString()
+    public unit_status_name: string;
 
     @Expose()
     @IsDate()
@@ -45,7 +54,9 @@ export default class UnitEntity {
         id: number | undefined,
         unit_name: string,
         unit_type_id: number,
+        unit_type_name: string,
         unit_status_id: number,
+        unit_status_name: string,
         created_at: Date | undefined,
         updated_at: Date | undefined,
         deleted_at: Date | undefined,
@@ -55,7 +66,9 @@ export default class UnitEntity {
         this.id = id;
         this.unit_name = unit_name;
         this.unit_type_id = unit_type_id;
+        this.unit_type_name = unit_type_name;
         this.unit_status_id = unit_status_id;
+        this.unit_status_name = unit_status_name;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.deleted_at = deleted_at;
