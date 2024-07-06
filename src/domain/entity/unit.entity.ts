@@ -9,6 +9,7 @@ export default class UnitEntity {
     @Expose()
     @IsString()
     public unit_name: string;
+
     @Expose()
     @IsNumber()
     public unit_type_id: number;
@@ -19,10 +20,12 @@ export default class UnitEntity {
 
     @Expose()
     @IsString()
+    @IsOptional()
     public unit_type_name: string;
 
     @Expose()
     @IsString()
+    @IsOptional()
     public unit_status_name: string;
 
     @Expose()
