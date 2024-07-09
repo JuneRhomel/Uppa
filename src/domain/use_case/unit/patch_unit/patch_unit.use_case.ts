@@ -13,7 +13,14 @@ export default async function PatchUnitUseCase({ unitEntity, authModel }: PatchU
         if (unitErrorValidation.length > 0) {
             return new ValidationFailure({ extra: unitErrorValidation });
         }
-        const patchtUnit = await PatchDataDataSource({ authModel, table: "unit", data: unitEntity })
+
+        const dataToUpdate = {
+            id: unitEntity.id,
+            unit_name: unitEntity.unit_name,
+            unit_type_id: unitEntity.unit_type_id,
+            unit_status_id: unitEntity.unit_status_id
+        }
+        const patchtUnit = await PatchDataDataSource({ authModel, table: "unit", data: dataToUpdate })
         return patchtUnit;
     } catch (error) {
         return FailureMapperUtil(error)

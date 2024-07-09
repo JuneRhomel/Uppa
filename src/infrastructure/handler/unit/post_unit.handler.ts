@@ -11,10 +11,11 @@ import Failure from '../../../domain/failure/failure';
 export default async function PostUnitHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {
         const body = req.body as UnitDto;
+
         const unitInfo = {
             unit_name: body.unit_name,
             unit_type_id: body.unit_type_id,
-            unit_status_id: body.unit_type_id
+            unit_status_id: body.unit_status_id
         }
         const authModelInfo = {
             userId: req.userAuth.userId,

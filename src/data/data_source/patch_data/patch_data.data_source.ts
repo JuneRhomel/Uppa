@@ -3,22 +3,26 @@ import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failu
 import SqlQuery from "../../../sql/database_pool.sql";
 import PatchDataDataSourceParams from "./interface/patch_data_data_source.params";
 
-export default async function PatchDataDataSource({
+export default async function patchData({
     authModel,
     table,
     data,
 }: PatchDataDataSourceParams): Promise<void | Failure> {
     try {
-        data.updated_at = new Date().toISOString();
-        data.updated_by = authModel.userId
-        const id = data.id
-        delete data.id
-        const columnNames = Object.keys(data).map(key => `${key} = ?`).join(', ');
-        const values = Object.values(data);
+        const { id, ...updatedData } = data;
+        updatedData.updated_at = new Date().toISOString();
+        updatedData.updated_by = authModel.userId;
+
+        const columnNames = Object.keys(updatedData)
+            .map(key => `${key} = ?`)
+            .join(', ');
+
+        const params = Object.values(updatedData).concat(id);
+
         const query = `UPDATE ${authModel.accountCode}.${table} SET ${columnNames} WHERE id = ?;`;
-        const params = [...values, id];
-        const result = await SqlQuery(query, params);
+
+        await SqlQuery(query, params);
     } catch (error) {
-        return FailureMapperUtil(error)
+        return FailureMapperUtil(error);
     }
 }

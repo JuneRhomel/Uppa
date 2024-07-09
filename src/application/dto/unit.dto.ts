@@ -1,10 +1,15 @@
 import { Expose } from "class-transformer";
+import { IsNumber } from "class-validator";
 export default class UnitDto {
     @Expose()
     public unit_name: string;
+
     @Expose()
+    @IsNumber()
     public unit_type_id: number;
+    
     @Expose()
+    @IsNumber()
     public unit_status_id: number;
 
     constructor(
