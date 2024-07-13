@@ -3,7 +3,7 @@ import FailureMapperUtil from "../../../infrastructure/util/failure_mapper/failu
 import SqlQuery from "../../../sql/database_pool.sql";
 import PatchDataDataSourceParams from "./interface/patch_data_data_source.params";
 
-export default async function patchData({
+export default async function PatchDataDataSource({
     authModel,
     table,
     data,

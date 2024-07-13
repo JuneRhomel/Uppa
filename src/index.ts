@@ -12,6 +12,7 @@ import PostRegisterHandler from "./infrastructure/handler/register/post_register
 import PathcPropertyInfoHandler from "./infrastructure/handler/property_info/patch_property_info.handler";
 import GetUnitTypeHandler from "./infrastructure/handler/unit/get_unit_type.handler";
 import GetUnitStatusHandler from "./infrastructure/handler/unit/get_unit_status.handler";
+import PatchUnitStatusHandler from "./infrastructure/handler/unit/patch_unit_status.handler";
 const cors = require("cors");
 const { PORT } = require("./infrastructure/config/config");
 
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
@@ -77,6 +78,9 @@ app.get("/unit-types", async (req: Request, res: Response) => {
 
 app.get("/unit-status", async (req: Request, res: Response) => {
   await GetUnitStatusHandler({ req, res });
+});
+app.patch("/unit-status", async (req: Request, res: Response) => {
+  await PatchUnitStatusHandler({ req, res });
 });
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
