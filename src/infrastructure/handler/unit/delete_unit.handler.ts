@@ -28,7 +28,7 @@ export default async function DeleteUnitHandler({ req, res }: ApiGatewayHelperPa
         if (response instanceof Failure) {
             return res.status(400).json(response)
         }
-        return res.status(201).json(response);
+        return res.status(201).json('success');
     } catch (error) {
         return res.status(500).json(error);
     }
