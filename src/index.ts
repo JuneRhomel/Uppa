@@ -13,6 +13,7 @@ import PathcPropertyInfoHandler from "./infrastructure/handler/property_info/pat
 import GetUnitTypeHandler from "./infrastructure/handler/unit/get_unit_type.handler";
 import GetUnitStatusHandler from "./infrastructure/handler/unit/get_unit_status.handler";
 import PatchUnitStatusHandler from "./infrastructure/handler/unit/patch_unit_status.handler";
+import DeleteUnitStatusHandler from "./infrastructure/handler/unit/delete_unit_status.handler";
 const cors = require("cors");
 const { PORT } = require("./infrastructure/config/config");
 
@@ -81,6 +82,9 @@ app.get("/unit-status", async (req: Request, res: Response) => {
 });
 app.patch("/unit-status/:id", async (req: Request, res: Response) => {
   await PatchUnitStatusHandler({ req, res });
+});
+app.delete("/unit-status/:id", async (req: Request, res: Response) => {
+  await DeleteUnitStatusHandler({ req, res });
 });
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

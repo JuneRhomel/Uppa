@@ -16,7 +16,7 @@ export default async function getUnitList({
         const sortOrderCondition = `ORDER BY ${sortBy} ${sortOrder}`;
 
         const query = `
-            SELECT 
+           SELECT 
                 unit.id as id,
                 unit.unit_name as unit_name,
                 unit.unit_type_id as unit_type_id,
@@ -35,8 +35,8 @@ export default async function getUnitList({
             INNER JOIN ${accountCode}.list_unit_type 
                 ON unit.unit_type_id = list_unit_type.id
             WHERE unit.deleted_at IS NULL
-            ${search? `AND (${searchColumns})` : ''}
-            ${sortBy && sortOrder ? sortOrderCondition : ""}
+            ${search ? `AND (${searchColumns})` : ''}
+            ${sortBy && sortOrder ? `${sortOrderCondition}` : ''}
             LIMIT ${numberOfRows} OFFSET ${(page - 1) * numberOfRows}
         `;
 
