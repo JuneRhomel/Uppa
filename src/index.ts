@@ -79,7 +79,7 @@ app.get("/unit-types", async (req: Request, res: Response) => {
 app.get("/unit-status", async (req: Request, res: Response) => {
   await GetUnitStatusHandler({ req, res });
 });
-app.patch("/unit-status", async (req: Request, res: Response) => {
+app.patch("/unit-status/:id", async (req: Request, res: Response) => {
   await PatchUnitStatusHandler({ req, res });
 });
 app.listen(port, () => {

@@ -13,7 +13,7 @@ export default async function PatchUnitStatusHandler({ req, res }: ApiGatewayHel
         const id = parseInt(req.params.id);
         const statusInfo = {
             id,
-            status_name: body.unit_status_name
+            unit_status_name: body.unit_status_name
         }
 
         const authModelInfo = {
