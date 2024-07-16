@@ -5,17 +5,29 @@ import UnitModel from "../../model/unit/unit.model";
 import GetUnitListDataSourceParams from "./interface/get_unit_list_data_source,params";
 
 export default async function getUnitList({
-    paginationModel,
-    authModel
+  paginationModel,
+  authModel,
 }: GetUnitListDataSourceParams): Promise<UnitModel[] | Failure> {
-    try {
-        const { search, filters, page, numberOfRows, columns, sortBy, sortOrder } = paginationModel;
-        const { accountCode } = authModel;
+  try {
+    const { search, filters, page, numberOfRows, columns, sortBy, sortOrder } =
+      paginationModel;
+    const { accountCode } = authModel;
 
-        const searchColumns = columns.map(column => `${column} LIKE '%${search}%'`).join(' OR ');
-        const sortOrderCondition = `ORDER BY ${sortBy} ${sortOrder}`;
+    const searchColumns = columns
+      .map((column) => `${column} LIKE '%${search}%'`)
+      .join(" OR ");
+    const sortOrderCondition = `ORDER BY ${sortBy} ${sortOrder}`;
 
-        const query = `
+    const validFilters = filters.filter((filter) => !filter.includes("All"));
+
+    let filterConditions = "";
+    if (validFilters.length > 0) {
+      filterConditions = `AND ${validFilters
+        .map((filter) => `${filter}`)
+        .join(" AND ")}`;
+    }
+
+    const query = `
            SELECT 
                 unit.id as id,
                 unit.unit_name as unit_name,
@@ -35,14 +47,13 @@ export default async function getUnitList({
             INNER JOIN ${accountCode}.list_unit_type 
                 ON unit.unit_type_id = list_unit_type.id
             WHERE unit.deleted_at IS NULL
-            ${search ? `AND (${searchColumns})` : ''}
-            ${sortBy && sortOrder ? `${sortOrderCondition}` : ''}
+            ${filterConditions ? `${filterConditions}` : ""}
+            ${search ? `AND (${searchColumns})` : ""}
+            ${sortBy && sortOrder ? `${sortOrderCondition}` : ""}
             LIMIT ${numberOfRows} OFFSET ${(page - 1) * numberOfRows}
         `;
-
-        return await SqlQuery(query);
-
-    } catch (error) {
-        return FailureMapperUtil(error);
-    }
+    return await SqlQuery(query);
+  } catch (error) {
+    return FailureMapperUtil(error);
+  }
 }

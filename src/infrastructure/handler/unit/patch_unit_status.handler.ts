@@ -30,7 +30,7 @@ export default async function PatchUnitStatusHandler({ req, res }: ApiGatewayHel
             }
         )
 
-        const data = plainToInstance(
+        const unitStatusEntity = plainToInstance(
             UnitStatusEntity,
             statusInfo,
             {
@@ -38,7 +38,7 @@ export default async function PatchUnitStatusHandler({ req, res }: ApiGatewayHel
             }
         )
 
-        const response = await PatchUnitStatusUseCase({ data, authModel })
+        const response = await PatchUnitStatusUseCase({ unitStatusEntity, authModel })
 
         if (response instanceof Failure) {
             return res.status(400).json(response);

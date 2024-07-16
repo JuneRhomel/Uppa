@@ -1,16 +1,16 @@
 import PatchDataDataSource from "../../../../data/data_source/patch_data/patch_data.data_source";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import Failure from "../../../failure/failure";
-import PatchUnitStatusUseCaseParams from "./interface/patch_unit_status_use_case";
+import PatchUnitTypeUseCaseParams from "./interface/patch_unit_type_use_case.params";
 
-export default async function PatchUnitStatusUseCase({
-  unitStatusEntity,
+export default async function PatchUnitTypeUseCase({
+  unitTypeEntity,
   authModel,
-}: PatchUnitStatusUseCaseParams): Promise<Failure | void> {
+}: PatchUnitTypeUseCaseParams): Promise<Failure | void> {
   try {
-    const table = "list_unit_status";
+    const table = "list_unit_type";
     return await PatchDataDataSource({
-      data: unitStatusEntity,
+      data: unitTypeEntity,
       table,
       authModel,
     });
