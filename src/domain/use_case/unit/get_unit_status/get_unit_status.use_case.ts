@@ -1,7 +1,7 @@
 import { plainToInstance } from "class-transformer";
-import GetDataDataSource from "../../../../data/data_source/get_data/get_data.data_source";
+import GetDataDataSource from "../../../../data/data_source/core/get_data/get_data.data_source";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
-import UnitStatusEntity from "../../../entity/unit_status.entity";
+import UnitStatusEntity from "../../../entity/unit/unit_status.entity";
 import Failure from "../../../failure/failure";
 import GetUnitStatusParams from "./interface/get_unit_status_use_case.params";
 

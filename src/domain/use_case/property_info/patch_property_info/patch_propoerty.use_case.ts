@@ -1,5 +1,5 @@
 import { validate } from "class-validator";
-import PatchDataDataSource from "../../../../data/data_source/patch_data/patch_data.data_source";
+import PatchDataDataSource from "../../../../data/data_source/core/patch_data/patch_data.data_source";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
 import ValidationFailure from "../../../failure/common/validation";
 import Failure from "../../../failure/failure";

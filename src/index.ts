@@ -1,5 +1,5 @@
 import express = require("express");
-import { Request, Response } from "express";
+import { Application, Request, Response } from "express";
 import PostAuthHandler from "./infrastructure/handler/auth/post_auth.handler";
 import VerifyToken from "./infrastructure/util/jwt_verify/jwt_token_verify";
 import PostPropertyInfoHandler from "./infrastructure/handler/property_info/post_property_info.handler";
@@ -15,30 +15,21 @@ import GetUnitStatusHandler from "./infrastructure/handler/unit/get_unit_status.
 import PatchUnitStatusHandler from "./infrastructure/handler/unit/patch_unit_status.handler";
 import DeleteUnitStatusHandler from "./infrastructure/handler/unit/delete_unit_status.handler";
 import PatchUnitTypeHandler from "./infrastructure/handler/unit/patch_unit_type.handler";
-const cors = require("cors");
 const { PORT } = require("./infrastructure/config/config");
 
+const cors = require("cors");
 const bodyParser = require("body-parser");
-const app = express();
+
+const app: Application = express();
 const port = PORT || 3000;
+
 app.use(bodyParser.json());
+app.use(cors({ origin: "*" }));
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-app.use(async function (req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
   if (req.url !== "/auth") {
-    await VerifyToken({ req, res, next });
+    VerifyToken({ req, res, next });
   } else {
     next();
   }
@@ -47,7 +38,6 @@ app.use(async function (req, res, next) {
 app.post("/auth", async (req: Request, res: Response) => {
   await PostAuthHandler({ req, res });
 });
-// Property
 app.post("/propertyinfo", async (req: Request, res: Response) => {
   await PostPropertyInfoHandler({ req, res });
 });
@@ -90,6 +80,7 @@ app.delete("/unit-status/:id", async (req: Request, res: Response) => {
 app.patch("/unit-types/:id", async (req: Request, res: Response) => {
   await PatchUnitTypeHandler({ req, res });
 });
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

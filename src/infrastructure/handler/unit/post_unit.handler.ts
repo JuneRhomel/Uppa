@@ -3,7 +3,7 @@ import { plainToInstance } from "class-transformer";
 
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import UnitDto from '../../../application/dto/unit.dto';
-import UnitEntity from '../../../domain/entity/unit.entity';
+import UnitEntity from '../../../domain/entity/unit/unit.entity';
 import AuthModel from '../../../data/model/auth/auth.model';
 import PostUnitUseCase from '../../../domain/use_case/unit/post_unit/post_unit.use_case';
 import Failure from '../../../domain/failure/failure';

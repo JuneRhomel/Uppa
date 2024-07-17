@@ -4,7 +4,7 @@ import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/fa
 import { validate } from "class-validator";
 import ValidationFailure from "../../../failure/common/validation";
 import PasswordMatchFailure from "../../../failure/register/password_match.failuer";
-import PostRegisterDataSource from "../../../../data/data_source/post_register/post_register.use_case";
+import PostRegisterDataSource from "../../../../data/data_source/auth/post_register/post_register.use_case";
 
 const md5 = require('md5');
 

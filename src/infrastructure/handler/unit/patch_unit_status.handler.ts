@@ -5,7 +5,7 @@ import AuthModel from "../../../data/model/auth/auth.model"
 import PatchUnitStatusUseCase from "../../../domain/use_case/unit/patch_unit_status/patch_unit_status.use_case";
 import { plainToInstance } from "class-transformer";
 import Failure from "../../../domain/failure/failure";
-import UnitStatusEntity from "../../../domain/entity/unit_status.entity";
+import UnitStatusEntity from "../../../domain/entity/unit/unit_status.entity";
 
 export default async function PatchUnitStatusHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {

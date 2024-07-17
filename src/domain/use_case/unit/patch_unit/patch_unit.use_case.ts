@@ -3,7 +3,7 @@ import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/fa
 import ValidationFailure from "../../../failure/common/validation";
 import Failure from "../../../failure/failure";
 import PatchUnitUseCaseParams from "./interface/patch_unit_use_case.params";
-import PatchDataDataSource from "../../../../data/data_source/patch_data/patch_data.data_source";
+import PatchDataDataSource from "../../../../data/data_source/core/patch_data/patch_data.data_source";
 
 export default async function PatchUnitUseCase({ unitEntity, authModel }: PatchUnitUseCaseParams): Promise<Failure | void> {
     try {

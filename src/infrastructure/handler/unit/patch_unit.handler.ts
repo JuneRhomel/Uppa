@@ -2,7 +2,7 @@ import ApiGatewayHelperParams from "../../../application/interface/api_gateway_h
 import { Response } from "express";
 import { plainToInstance } from "class-transformer";
 import UnitDto from "../../../application/dto/unit.dto";
-import UnitEntity from "../../../domain/entity/unit.entity";
+import UnitEntity from "../../../domain/entity/unit/unit.entity";
 import AuthModel from "../../../data/model/auth/auth.model";
 import PatchUnitUseCase from "../../../domain/use_case/unit/patch_unit/patch_unit.use_case";
 import Failure from "../../../domain/failure/failure";

@@ -1,4 +1,4 @@
-import PostAuthDataSource from "../../../../data/data_source/post_auth/post_auth.data_source";
+import PostAuthDataSource from "../../../../data/data_source/auth/post_auth/post_auth.data_source";
 import PatchAuthUseCaseParams from "./interface/patch_auth_use_case.params";
 import Failure from "../../../failure/failure";
 import JtwToken from "../../../../infrastructure/util/jwt/jtw_token.util";

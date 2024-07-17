@@ -2,7 +2,7 @@ import PropertyInfoDto from "../../../application/dto/property_info.dto";
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import { Response } from "express"
 import { plainToInstance } from "class-transformer";
-import PropertyInfoEntity from "../../../domain/entity/property_info.entity";
+import PropertyInfoEntity from "../../../domain/entity/property_info/property_info.entity";
 import AuthModel from "../../../data/model/auth/auth.model";
 import PatchPropertyInfoUseCas from "../../../domain/use_case/property_info/patch_property_info/patch_propoerty.use_case";
 import Failure from "../../../domain/failure/failure";

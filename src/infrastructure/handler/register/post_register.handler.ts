@@ -3,7 +3,7 @@ import { plainToInstance } from "class-transformer";
 
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import { Response } from 'express';
-import UserEntity from "../../../domain/entity/user.entity";
+import UserEntity from "../../../domain/entity/user/user.entity";
 import AuthModel from "../../../data/model/auth/auth.model";
 import PostRegisterUseCase from "../../../domain/use_case/register/post_register/post_register.use_case";
 import Failure from "../../../domain/failure/failure";

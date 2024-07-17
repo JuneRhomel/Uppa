@@ -1,7 +1,7 @@
 import PaginationDto from "../../../application/dto/pagination.dto";
 import { Response } from "express";
 import { plainToInstance } from "class-transformer";
-import PaginationEntity from "../../../domain/entity/panigation.entity";
+import PaginationEntity from "../../../domain/entity/pagination/panigation.entity";
 import AuthModel from "../../../data/model/auth/auth.model";
 import GetUnitListUseCase from "../../../domain/use_case/unit/get_unit_list/get_unit_list.use_case";
 import Failure from "../../../domain/failure/failure";
