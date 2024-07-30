@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer";
 import { IsDate, IsNumber, IsOptional, IsString, Length } from "class-validator";
 
-export default class TenantModel {
+export default class TenantEntity {
     @Expose()
     @IsOptional()
     @IsNumber()
@@ -18,23 +18,22 @@ export default class TenantModel {
     public last_name: string;
 
     @Expose()
-    public get full_name(): string {
-        return `${this.first_name} ${this.last_name}`;
-    }
+    @IsString()
+    public status: string;
+
+    @Expose()
+    @IsNumber()
+    public status_id: number;
 
     @Expose()
     @IsString()
     @Length(12)
-    public phone_number: string;
+    public contact_number: string;
 
     @Expose()
     @IsString()
     @Length(3, 100)
     public email: string;
-
-    @Expose()
-    @IsNumber()
-    public is_active: number;
 
     @Expose()
     @IsDate()
@@ -58,8 +57,9 @@ export default class TenantModel {
         first_name: string,
         last_name: string,
         email: string,
-        phone_number: string,
-        is_active: number,
+        status: string,
+        status_id: number,
+        contact_number: string,
         created_at: Date,
         updated_at: Date,
         created_by: number,
@@ -69,8 +69,9 @@ export default class TenantModel {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
-        this.phone_number = phone_number;
-        this.is_active = is_active;
+        this.status = status;
+        this.status_id = status_id;
+        this.contact_number = contact_number;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.created_by = created_by;

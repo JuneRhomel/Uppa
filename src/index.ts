@@ -15,6 +15,7 @@ import GetUnitStatusHandler from "./infrastructure/handler/unit/get_unit_status.
 import PatchUnitStatusHandler from "./infrastructure/handler/unit/patch_unit_status.handler";
 import DeleteUnitStatusHandler from "./infrastructure/handler/unit/delete_unit_status.handler";
 import PatchUnitTypeHandler from "./infrastructure/handler/unit/patch_unit_type.handler";
+import GetTenantListHandler from "./infrastructure/handler/tenant/get_tenant_list.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -79,6 +80,10 @@ app.delete("/unit-status/:id", async (req: Request, res: Response) => {
 });
 app.patch("/unit-types/:id", async (req: Request, res: Response) => {
   await PatchUnitTypeHandler({ req, res });
+});
+
+app.get("/tenant", async (req: Request, res: Response) => {
+  await GetTenantListHandler({ req, res });
 });
 
 app.listen(port, () => {

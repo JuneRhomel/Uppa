@@ -10,19 +10,17 @@ export default class TenantModel {
     @Expose({ name: 'last_name' })
     public last_name: string;
 
-    @Expose({ name: 'full_name' })
-    public get full_name(): string {
-        return `${this.first_name} ${this.last_name}`;
-    }
+    @Expose({ name: 'status' })
+    public status: string;
 
-    @Expose({ name: 'phone_number' })
-    public phone_number: string;
+    @Expose({ name: 'status_id' })
+    public status_id: number;
+
+    @Expose({ name: 'contact_number' })
+    public contact_number: string;
 
     @Expose({ name: 'email' })
     public email: string;
-
-    @Expose({ name: 'is_active' })
-    public is_active: boolean;
 
     @Expose({ name: 'created_at' })
     public created_at: Date;
@@ -42,8 +40,9 @@ export default class TenantModel {
         first_name: string,
         last_name: string,
         email: string,
-        phone_number: string,
-        is_active: boolean,
+        status: string,
+        status_id: number,
+        contact_number: string,
         created_at: Date,
         updated_at: Date,
         created_by: number,
@@ -53,8 +52,9 @@ export default class TenantModel {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
-        this.phone_number = phone_number;
-        this.is_active = is_active;
+        this.status = status;
+        this.status_id = status_id;
+        this.contact_number = contact_number;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.created_by = created_by;

@@ -5,7 +5,6 @@ import { plainToInstance } from "class-transformer";
 import Failure from "../../../failure/failure";
 import GetUnitUseCaseParams from "./interface/get_unit_list_use_case.params";
 import PaginationModel from "../../../../data/model/panigation/panigation.model";
-import UnitModel from "../../../../data/model/unit/unit.model";
 import GetTotalListRowsDataSource from "../../../../data/data_source/core/get_total_list_rows/get_total_list_rows.data_source";
 import GetUnitListEntity from "../../../entity/unit/get_unit_list.entiry";
 import UnitEntity from "../../../entity/unit/unit.entity";
