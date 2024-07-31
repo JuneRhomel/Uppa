@@ -12,7 +12,9 @@ export default async function GetUnitListHandler({
   res,
 }: ApiGatewayHelperParams): Promise<Response> {
   try {
+
     const body: PaginationDto = req.query as any;
+    
     const getListPagination = {
       search: body.search || "",
       page: parseInt(body.page) || 1,
@@ -22,12 +24,14 @@ export default async function GetUnitListHandler({
       sortOrder: body.sortOrder,
       filters: body.filters,
     };
+
     const authModelInfo = {
       userId: req.userAuth.userId,
       email: req.userAuth.email,
       accountCode: req.userAuth.accountCode,
       token: req.userAuth.token,
     };
+
     const paginationEntity = plainToInstance(
       PaginationEntity,
       getListPagination,
@@ -35,9 +39,11 @@ export default async function GetUnitListHandler({
         excludeExtraneousValues: true,
       }
     );
+
     const authModel = plainToInstance(AuthModel, authModelInfo, {
       excludeExtraneousValues: true,
     });
+
     const response = await GetUnitListUseCase({ paginationEntity, authModel });
 
     if (response instanceof Failure) {
