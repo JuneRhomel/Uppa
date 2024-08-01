@@ -41,9 +41,11 @@ export default async function PatchUnitStatusHandler({ req, res }: ApiGatewayHel
         const response = await PatchUnitStatusUseCase({ unitStatusEntity, authModel })
 
         if (response instanceof Failure) {
-            return res.status(400).json(response);
+            return res.status(400).json(response)
         }
+
         return res.status(201).json("success");
+        
     } catch (error) {
         return res.status(500).json(error);
     }

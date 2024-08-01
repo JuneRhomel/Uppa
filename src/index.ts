@@ -17,6 +17,7 @@ import DeleteUnitStatusHandler from "./infrastructure/handler/unit/delete_unit_s
 import PatchUnitTypeHandler from "./infrastructure/handler/unit/patch_unit_type.handler";
 import GetTenantListHandler from "./infrastructure/handler/tenant/get_tenant_list.handler";
 import GetTenantStatusHandler from "./infrastructure/handler/tenant/get_tenant_status.handler";
+import PostTenantHandler from "./infrastructure/handler/tenant/post_tenant.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -88,6 +89,9 @@ app.get("/tenant", async (req: Request, res: Response) => {
 });
 app.get("/tenant/status", async (req: Request, res: Response) => {
   await GetTenantStatusHandler({ req, res });
+});
+app.post("/tenant", async (req: Request, res: Response) => {
+  await PostTenantHandler({ req, res });
 });
 
 app.listen(port, () => {

@@ -19,7 +19,8 @@ export default class TenantEntity {
 
     @Expose()
     @IsString()
-    public status: string;
+    @IsOptional()
+    public status: string | undefined;;
 
     @Expose()
     @IsNumber()
@@ -27,7 +28,7 @@ export default class TenantEntity {
 
     @Expose()
     @IsString()
-    @Length(12)
+    @Length(11)
     public contact_number: string;
 
     @Expose()
@@ -37,19 +38,23 @@ export default class TenantEntity {
 
     @Expose()
     @IsDate()
+    @IsOptional()
     public created_at: Date | undefined;
 
     @Expose()
     @IsDate()
+    @IsOptional()
     public updated_at: Date | undefined;
 
     @Expose()
     @IsNumber()
-    public created_by: number;
+    @IsOptional()
+    public created_by: number | undefined;
 
     @Expose()
     @IsNumber()
-    public updated_by: number;
+    @IsOptional()
+    public updated_by: number | undefined;
 
 
     constructor(
@@ -60,10 +65,10 @@ export default class TenantEntity {
         status: string,
         status_id: number,
         contact_number: string,
-        created_at: Date,
-        updated_at: Date,
-        created_by: number,
-        updated_by: number
+        created_at: Date | undefined,
+        updated_at: Date | undefined,
+        created_by: number | undefined,
+        updated_by: number | undefined
     ) {
         this.id = id;
         this.first_name = first_name;
