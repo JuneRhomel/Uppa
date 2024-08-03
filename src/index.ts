@@ -18,6 +18,7 @@ import PatchUnitTypeHandler from "./infrastructure/handler/unit/patch_unit_type.
 import GetTenantListHandler from "./infrastructure/handler/tenant/get_tenant_list.handler";
 import GetTenantStatusHandler from "./infrastructure/handler/tenant/get_tenant_status.handler";
 import PostTenantHandler from "./infrastructure/handler/tenant/post_tenant.handler";
+import GetMotherMeterWaterListHandler from "./infrastructure/handler/mother_meter_water/get_mother_meter_water_list.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -92,6 +93,10 @@ app.get("/tenant/status", async (req: Request, res: Response) => {
 });
 app.post("/tenant", async (req: Request, res: Response) => {
   await PostTenantHandler({ req, res });
+});
+
+app.get("/mother/meter/water", async (req: Request, res: Response) => {
+  await GetMotherMeterWaterListHandler({ req, res });
 });
 
 app.listen(port, () => {
