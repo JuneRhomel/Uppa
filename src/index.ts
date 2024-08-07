@@ -19,6 +19,9 @@ import GetTenantListHandler from "./infrastructure/handler/tenant/get_tenant_lis
 import GetTenantStatusHandler from "./infrastructure/handler/tenant/get_tenant_status.handler";
 import PostTenantHandler from "./infrastructure/handler/tenant/post_tenant.handler";
 import GetMotherMeterWaterListHandler from "./infrastructure/handler/mother_meter_water/get_mother_meter_water_list.handler";
+import GetMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electicity/get_mother_meter_electicity.handler";
+import PostMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/post_mother_meter_water.handler";
+import PostMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electicity/post_mother_meter_electricity.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -97,6 +100,18 @@ app.post("/tenant", async (req: Request, res: Response) => {
 
 app.get("/mother/meter/water", async (req: Request, res: Response) => {
   await GetMotherMeterWaterListHandler({ req, res });
+});
+
+app.post("/mother/meter/water", async (req: Request, res: Response) => {
+  await PostMotherMeterWaterHandler({ req, res });
+});
+
+app.get("/mother/meter/electricity", async (req: Request, res: Response) => {
+  await GetMotherMeterElectricityHandler({ req, res });
+});
+
+app.post("/mother/meter/electricity", async (req: Request, res: Response) => {
+  await PostMotherMeterElectricityHandler({ req, res });
 });
 
 app.listen(port, () => {

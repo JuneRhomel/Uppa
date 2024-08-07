@@ -1,19 +1,13 @@
 import { Expose } from "class-transformer";
-import { IsDate, IsNumber, isNumber, IsOptional, IsString } from "class-validator";
 
-export default class MotherMeterWaterEntity {
-    @Expose()
-    @IsNumber()
-    @IsOptional()
+export default class MotherMeterElectricityModel {
+    @Expose({ name: "id" })
     id: number | undefined;
 
-    @Expose()
-    @IsString()
+    @Expose({ name: "serial_number" })
     serialNumber: string;
 
-    @Expose()
-    @IsDate()
-    @IsOptional()
+    @Expose({ name: "created_at" })
     createdAt: Date | null;
 
 
@@ -21,6 +15,7 @@ export default class MotherMeterWaterEntity {
         id: number | undefined,
         serialNumber: string,
         createdAt: Date | null
+
     ) {
         this.id = id;
         this.serialNumber = serialNumber;

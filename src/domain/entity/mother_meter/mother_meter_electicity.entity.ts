@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer";
 import { IsDate, IsNumber, isNumber, IsOptional, IsString } from "class-validator";
 
-export default class MotherMeterWaterEntity {
+export default class MotherMeterElectricityEntity {
     @Expose()
     @IsNumber()
     @IsOptional()
@@ -18,7 +18,7 @@ export default class MotherMeterWaterEntity {
 
 
     constructor(
-        id: number | undefined,
+        id: number,
         serialNumber: string,
         createdAt: Date | null
     ) {
