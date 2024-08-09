@@ -6,6 +6,6 @@
         "emitDecoratorMetadata": true,
         "strict": true
     },  
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/data/data_source/mother_meter_electricity/post_mother_meter_electricity/interface/post_mother_meter_electricity_data_source.paramsts"],
     "exclude": ["node_modules"]
   }

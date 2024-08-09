@@ -1,9 +1,9 @@
 import GetTotalListRowsDataSource from "../../../../data/data_source/core/get_total_list_rows/get_total_list_rows.data_source";
-import GetMotherMeterElectricityDataSource from "../../../../data/data_source/mother_meter_electricity/get_mother_meter_electricity/get_mother_meter_electicity.data_source";
+import GetMotherMeterElectricityDataSource from "../../../../data/data_source/mother_meter_electricity/get_mother_meter_electricity/get_mother_meter_electricity.data_source";
 import PaginationModel from "../../../../data/model/panigation/panigation.model";
 import FailureMapperUtil from "../../../../infrastructure/util/failure_mapper/failure_mapper.util";
-import MotherMeterElectricityEntity from "../../../entity/mother_meter/mother_meter_electicity.entity";
-import MotherMeterElectricityListEntity from "../../../entity/mother_meter/mother_meter_electicity_list.entity";
+import MotherMeterElectricityEntity from "../../../entity/mother_meter/mother_meter_electricity.entity";
+import MotherMeterElectricityListEntity from "../../../entity/mother_meter/mother_meter_electricity_list.entity";
 import Failure from "../../../failure/failure";
 import GetMotherMeterElectricityUseCaseParams from "./interface/get_mother_meter_electicity_use_case.params";
 import { plainToInstance } from "class-transformer";

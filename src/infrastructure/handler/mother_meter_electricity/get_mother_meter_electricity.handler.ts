@@ -4,7 +4,7 @@ import { Response } from "express";
 import AuthModel from "../../../data/model/auth/auth.model";
 import PaginationEntity from "../../../domain/entity/pagination/panigation.entity";
 import { plainToInstance } from "class-transformer";
-import GetMotherMeterElectricityUseCase from "../../../domain/use_case/mother_meter_electicity/get_mother_meter_electicity/get_mother_meter_electicity.use_case";
+import GetMotherMeterElectricityUseCase from "../../../domain/use_case/mother_meter_electricity/get_mother_meter_electricity/get_mother_meter_electicity.use_case";
 import Failure from "../../../domain/failure/failure";
 export default async function GetMotherMeterElectricityHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
     try {
