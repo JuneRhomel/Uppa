@@ -25,6 +25,9 @@ import PostMotherMeterElectricityHandler from "./infrastructure/handler/mother_m
 import GetTenantHandler from "./infrastructure/handler/tenant/get_tenant.handler";
 import PatchTenantHandler from "./infrastructure/handler/tenant/patch_tenant.hadler";
 import DeleteTenantHandler from "./infrastructure/handler/tenant/delete_tenant.handler";
+import GetMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/get_mother_meter.handler";
+import PatchMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/patch_mother_meter_water.handler";
+import DeleteMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/delete_mother_meter_water.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -116,6 +119,15 @@ app.get("/mother/meter/water", async (req: Request, res: Response) => {
 
 app.post("/mother/meter/water", async (req: Request, res: Response) => {
   await PostMotherMeterWaterHandler({ req, res });
+});
+app.get("/mother/meter/water/:id", async (req: Request, res: Response) => {
+  await GetMotherMeterWaterHandler({ req, res });
+});
+app.patch("/mother/meter/water/:id", async (req: Request, res: Response) => {
+  await PatchMotherMeterWaterHandler({ req, res });
+});
+app.delete("/mother/meter/water/:id", async (req: Request, res: Response) => {
+  await DeleteMotherMeterWaterHandler({ req, res });
 });
 
 app.get("/mother/meter/electricity", async (req: Request, res: Response) => {
