@@ -103,9 +103,7 @@ REPLACE INTO `mother_meter_electricity` (`id`, `serial_number`, `created_at`, `u
 	(18, 'EMD017', '2024-08-04 19:48:17', '2024-08-04 19:48:17', NULL, 1, NULL, 1),
 	(19, 'EMD018', '2024-08-04 19:48:17', '2024-08-04 19:48:17', NULL, 1, NULL, 1),
 	(20, 'EMD019', '2024-08-04 19:48:17', '2024-08-04 19:48:17', NULL, 1, NULL, 1),
-	(21, 'EMD020', '2024-08-04 19:48:17', '2024-08-04 19:48:17', NULL, 1, NULL, 1),
-	(22, 'Test-3434-3434', '2024-08-08 00:09:46', NULL, NULL, 6, NULL, NULL),
-	(23, 'MME-34554656', '2024-08-14 09:35:03', NULL, NULL, 6, NULL, NULL);
+	(21, 'EMD0201 1 New', '2024-08-04 19:48:17', '2024-08-25 16:27:15', NULL, 1, NULL, 6);
 
 -- Dumping structure for table mang_kanor_rent.mother_meter_reading_electicity
 DROP TABLE IF EXISTS `mother_meter_reading_electicity`;
@@ -163,55 +161,58 @@ CREATE TABLE IF NOT EXISTS `mother_meter_water` (
   `deleted_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `serial_number` (`serial_number`(768))
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `serial_number` (`serial_number`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mang_kanor_rent.mother_meter_water: ~44 rows (approximately)
+-- Dumping data for table mang_kanor_rent.mother_meter_water: ~1 rows (approximately)
 REPLACE INTO `mother_meter_water` (`id`, `serial_number`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `deleted_by`, `updated_by`) VALUES
-	(1, 'HDFA 9348 A934', '2024-08-04 02:10:15', NULL, NULL, NULL, NULL, NULL),
-	(2, 'SN000001', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(3, 'SN000002', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(4, 'SN000003', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(5, 'SN000004', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(6, 'SN000005', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(7, 'SN000006', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(8, 'SN000007', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(9, 'SN000008', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(10, 'SN000009', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(11, 'SN000010', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(12, 'SN000011', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(13, 'SN000012', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(14, 'SN000013', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(15, 'SN000014', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(16, 'SN000015', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(17, 'SN000016', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(18, 'SN000017', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(19, 'SN000018', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(20, 'SN000019', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(21, 'SN000020', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(22, 'SN000021', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(23, 'SN000022', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(24, 'SN000023', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(25, 'SN000024', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(26, 'SN000025', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(27, 'SN000026', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(28, 'SN000027', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(29, 'SN000028', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(30, 'SN000029', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(31, 'SN000030', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(32, 'SN000031', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(33, 'SN000032', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(34, 'SN000033', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(35, 'SN000034', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(36, 'SN000035', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(37, 'SN000036', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(38, 'SN000037', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(39, 'SN000038', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(40, 'SN000039', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(41, 'SN000040', '2024-08-04 02:14:55', '2024-08-04 02:14:55', NULL, 1, NULL, 1),
-	(42, 'WMWWW45353454535', '2024-08-05 23:02:42', NULL, NULL, 6, NULL, NULL),
-	(43, 'Test-3434-3434-23', '2024-08-05 23:02:56', '2024-08-17 20:48:16', NULL, 6, NULL, 6),
-	(44, 'WMWWW453531', '2024-08-05 23:03:10', '2024-08-17 20:47:29', NULL, 6, NULL, 6);
+	(1, 'MMW-2323233', '2024-08-25 16:38:21', NULL, NULL, 6, NULL, NULL),
+	(2, 'MW-2323233', '2024-08-25 16:53:10', NULL, NULL, 6, NULL, NULL),
+	(3, 'MW-232323333', '2024-08-25 17:01:42', '2024-08-25 17:51:56', NULL, 6, NULL, 6);
+
+-- Dumping structure for table mang_kanor_rent.sub_meter_electricity
+DROP TABLE IF EXISTS `sub_meter_electricity`;
+CREATE TABLE IF NOT EXISTS `sub_meter_electricity` (
+  `id` int(11) NOT NULL,
+  `serial_number` text DEFAULT NULL,
+  `unit_id` int(11) DEFAULT NULL,
+  `mother_meter_id` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `deleted_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `serial_number` (`serial_number`) USING HASH,
+  KEY `unit_id` (`unit_id`),
+  KEY `mother_meter_id` (`mother_meter_id`),
+  CONSTRAINT `FK_sub_meter_electricity_mother_meter_electricity` FOREIGN KEY (`mother_meter_id`) REFERENCES `mother_meter_electricity` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_sub_meter_electricity_unit` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table mang_kanor_rent.sub_meter_electricity: ~0 rows (approximately)
+
+-- Dumping structure for table mang_kanor_rent.sub_meter_water
+DROP TABLE IF EXISTS `sub_meter_water`;
+CREATE TABLE IF NOT EXISTS `sub_meter_water` (
+  `id` int(11) NOT NULL,
+  `serial_number` text DEFAULT NULL,
+  `unit_id` int(11) DEFAULT NULL,
+  `mother_meter_id` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `deleted_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `serial_number` (`serial_number`) USING HASH,
+  KEY `unit_id` (`unit_id`),
+  KEY `mother_meter_id` (`mother_meter_id`),
+  CONSTRAINT `FK_sub_meter_water_mother_meter_water` FOREIGN KEY (`mother_meter_id`) REFERENCES `mother_meter_water` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_sub_meter_water_unit` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table mang_kanor_rent.sub_meter_water: ~0 rows (approximately)
 
 -- Dumping structure for table mang_kanor_rent.tenant
 DROP TABLE IF EXISTS `tenant`;
@@ -458,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table uppa_accounts.account: ~5 rows (approximately)
+-- Dumping data for table uppa_accounts.account: ~4 rows (approximately)
 REPLACE INTO `account` (`id`, `firstname`, `lastname`, `is_active`, `email`, `password`, `token`, `account_code`, `updated_at`, `created_at`, `delated_at`, `updated_by`, `delated_by`) VALUES
 	(1, 'June Rhomel', 'Mandigma', 1, 'junemandigma@gmail.com', '6a1e5acd79abc6be06be217bb4c9fc37', '', 'mang_kanor_rent', '2024-06-21 22:38:16', NULL, '2024-06-21 14:59:57', 0, 0),
 	(2, 'June asd', 'Mandigmae', 1, '', '12345678', '', '', '2024-06-21 16:20:36', '2024-06-21 14:51:52', NULL, 0, 0),
@@ -480,7 +481,7 @@ CREATE TABLE IF NOT EXISTS `tenant_status_list` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table uppa_core.tenant_status_list: ~3 rows (approximately)
+-- Dumping data for table uppa_core.tenant_status_list: ~2 rows (approximately)
 REPLACE INTO `tenant_status_list` (`id`, `status_name`) VALUES
 	(1, 'Active'),
 	(2, 'Inactive'),
