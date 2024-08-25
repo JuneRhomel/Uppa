@@ -4,7 +4,7 @@ import MotherMeterElectricityDto from "../../../application/dto/mother_meter_ele
 import ApiGatewayHelperParams from "../../../application/interface/api_gateway_helper.params";
 import AuthModel from "../../../data/model/auth/auth.model";
 import MotherMeterElectricityEntity from "../../../domain/entity/mother_meter/mother_meter_electricity.entity";
-import PatchMotherMeterElectricityUseCase from "../../../domain/use_case/mother_meter_electricity/patch_mother_meter_electricity/patch_mother_meter_electricity.use_case";
+import PatchMotherMeterElectricityListUseCase from "../../../domain/use_case/mother_meter_electricity/patch_mother_meter_electricity/patch_mother_meter_electricity.use_case";
 
 
 export default async function PatchMotherMeterElectricityHandler({ req, res }: ApiGatewayHelperParams): Promise<Response> {
@@ -26,7 +26,7 @@ export default async function PatchMotherMeterElectricityHandler({ req, res }: A
                 excludeExtraneousValues: true,
             }
         );
-        const response = await PatchMotherMeterElectricityUseCase({
+        const response = await PatchMotherMeterElectricityListUseCase({
             authModel,
             motherMeterElectricityEntity,
         });

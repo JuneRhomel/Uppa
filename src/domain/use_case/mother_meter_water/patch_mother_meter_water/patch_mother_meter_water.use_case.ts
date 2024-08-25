@@ -5,7 +5,6 @@ import ValidationFailure from "../../../failure/common/validation";
 import Failure from "../../../failure/failure";
 import PatchMotherMeterWaterUseCaseParams from "./interface/patch_mother_meter_water_use_case.params";
 import MotherMeterWaterModel from "../../../../data/model/mother_meter/mother_meter_water.model";
-import { plainToInstance } from "class-transformer";
 
 
 export default async function PatchMotherMeterWaterUseCase({ authModel, motherMeterWaterWaterEntity }: PatchMotherMeterWaterUseCaseParams): Promise<Failure | void> {

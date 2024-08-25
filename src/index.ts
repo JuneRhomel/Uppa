@@ -19,7 +19,7 @@ import GetTenantListHandler from "./infrastructure/handler/tenant/get_tenant_lis
 import GetTenantStatusHandler from "./infrastructure/handler/tenant/get_tenant_status.handler";
 import PostTenantHandler from "./infrastructure/handler/tenant/post_tenant.handler";
 import GetMotherMeterWaterListHandler from "./infrastructure/handler/mother_meter_water/get_mother_meter_water_list.handler";
-import GetMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/get_mother_meter_electricity.handler";
+import GetMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/get_mother_meter_electricity_list.handler";
 import PostMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/post_mother_meter_water.handler";
 import PostMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/post_mother_meter_electricity.handler";
 import GetTenantHandler from "./infrastructure/handler/tenant/get_tenant.handler";
@@ -29,6 +29,7 @@ import GetMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_wa
 import PatchMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/patch_mother_meter_water.handler";
 import DeleteMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/delete_mother_meter_water.handler";
 import PatchMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/patch_mother_meter_electricity.handler";
+import GetMotherMeterElectricityhandler from "./infrastructure/handler/mother_meter_electricity/get_mother_meter_electricity.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -156,6 +157,9 @@ app.post("/mother/meter/electricity", async (req: Request, res: Response) => {
 
 app.patch("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
   await PatchMotherMeterElectricityHandler({ req, res });
+});
+app.get("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
+  await GetMotherMeterElectricityhandler({ req, res });
 });
 
 app.listen(port, () => {
