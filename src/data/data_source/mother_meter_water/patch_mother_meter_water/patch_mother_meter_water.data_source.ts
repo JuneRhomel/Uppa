@@ -5,6 +5,7 @@ import PatchMotherMeterWaterDataSourceParams from "./interface/patch_mother_mete
 
 export default async function PatchMotherMeterWaterDataSource({ authModel, motherMeterWaterWaterModel }: PatchMotherMeterWaterDataSourceParams): Promise<Failure | void> {
     try {
+        console.log(motherMeterWaterWaterModel)
         const sql = `UPDATE ${authModel.accountCode}.mother_meter_water SET 
         serial_number = ?,
         updated_at = CURRENT_TIMESTAMP,

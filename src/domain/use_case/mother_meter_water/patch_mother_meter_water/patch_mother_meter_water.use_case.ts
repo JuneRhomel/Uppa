@@ -17,8 +17,12 @@ export default async function PatchMotherMeterWaterUseCase({ authModel, motherMe
         if (validation.length > 0) {
             return new ValidationFailure({ extra: validation })
         }
-        const motherMeterWaterWaterModel = plainToInstance(MotherMeterWaterModel, motherMeterWaterWaterEntity, { excludeExtraneousValues: true })
-
+        
+        const motherMeterWaterWaterModel = new MotherMeterWaterModel(
+            motherMeterWaterWaterEntity.id,
+            motherMeterWaterWaterEntity.serialNumber,
+            motherMeterWaterWaterEntity.createdAt
+        )
         return await PatchMotherMeterWaterDataSource({ authModel, motherMeterWaterWaterModel })
     } catch (error) {
         return FailureMapperUtil(error)

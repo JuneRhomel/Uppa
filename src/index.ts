@@ -28,6 +28,7 @@ import DeleteTenantHandler from "./infrastructure/handler/tenant/delete_tenant.h
 import GetMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/get_mother_meter.handler";
 import PatchMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/patch_mother_meter_water.handler";
 import DeleteMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/delete_mother_meter_water.handler";
+import PatchMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/patch_mother_meter_electricity.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -51,9 +52,11 @@ app.use((req, res, next) => {
 app.post("/auth", async (req: Request, res: Response) => {
   await PostAuthHandler({ req, res });
 });
+
 app.post("/propertyinfo", async (req: Request, res: Response) => {
   await PostPropertyInfoHandler({ req, res });
 });
+
 app.patch("/propertyinfo", async (req: Request, res: Response) => {
   await PathcPropertyInfoHandler({ req, res });
 });
@@ -61,12 +64,15 @@ app.patch("/propertyinfo", async (req: Request, res: Response) => {
 app.post("/unit", async (req: Request, res: Response) => {
   await PostUnitHandler({ req, res });
 });
+
 app.get("/unit", async (req: Request, res: Response) => {
   await GetUnitListHandler({ req, res });
 });
+
 app.get("/unit/:id", async (req: Request, res: Response) => {
   await GetUnitHandler({ req, res });
 });
+
 app.patch("/unit/:id", async (req: Request, res: Response) => {
   await PatchUnitHandler({ req, res });
 });
@@ -77,6 +83,7 @@ app.delete("/unit/:id", async (req: Request, res: Response) => {
 app.post("/register", async (req: Request, res: Response) => {
   await PostRegisterHandler({ req, res });
 });
+
 app.get("/unit-types", async (req: Request, res: Response) => {
   await GetUnitTypeHandler({ req, res });
 });
@@ -84,6 +91,7 @@ app.get("/unit-types", async (req: Request, res: Response) => {
 app.get("/unit-status", async (req: Request, res: Response) => {
   await GetUnitStatusHandler({ req, res });
 });
+
 app.patch("/unit-status/:id", async (req: Request, res: Response) => {
   await PatchUnitStatusHandler({ req, res });
 });
@@ -97,18 +105,23 @@ app.patch("/unit-types/:id", async (req: Request, res: Response) => {
 app.get("/tenant", async (req: Request, res: Response) => {
   await GetTenantListHandler({ req, res });
 });
+
 app.get("/tenant/:id", async (req: Request, res: Response) => {
   await GetTenantHandler({ req, res });
 });
+
 app.patch("/tenant/:id", async (req: Request, res: Response) => {
   await PatchTenantHandler({ req, res });
 });
+
 app.delete("/tenant/:id", async (req: Request, res: Response) => {
   await DeleteTenantHandler({ req, res });
 });
+
 app.get("/tenant-status", async (req: Request, res: Response) => {
   await GetTenantStatusHandler({ req, res });
 });
+
 app.post("/tenant", async (req: Request, res: Response) => {
   await PostTenantHandler({ req, res });
 });
@@ -120,12 +133,15 @@ app.get("/mother/meter/water", async (req: Request, res: Response) => {
 app.post("/mother/meter/water", async (req: Request, res: Response) => {
   await PostMotherMeterWaterHandler({ req, res });
 });
+
 app.get("/mother/meter/water/:id", async (req: Request, res: Response) => {
   await GetMotherMeterWaterHandler({ req, res });
 });
+
 app.patch("/mother/meter/water/:id", async (req: Request, res: Response) => {
   await PatchMotherMeterWaterHandler({ req, res });
 });
+
 app.delete("/mother/meter/water/:id", async (req: Request, res: Response) => {
   await DeleteMotherMeterWaterHandler({ req, res });
 });
@@ -136,6 +152,10 @@ app.get("/mother/meter/electricity", async (req: Request, res: Response) => {
 
 app.post("/mother/meter/electricity", async (req: Request, res: Response) => {
   await PostMotherMeterElectricityHandler({ req, res });
+});
+
+app.patch("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
+  await PatchMotherMeterElectricityHandler({ req, res });
 });
 
 app.listen(port, () => {
