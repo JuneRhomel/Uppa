@@ -35,7 +35,7 @@ export default async function PostMotherMeterElectricityHandler({
             authModel,
             motherMeterElectricityEntity,
         });
-        return res.status(200).json(response);
+        return res.status(200).json("");
     } catch (error) {
         return res.status(400).json(error);
     }

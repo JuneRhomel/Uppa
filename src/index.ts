@@ -30,6 +30,7 @@ import PatchMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_
 import DeleteMotherMeterWaterHandler from "./infrastructure/handler/mother_meter_water/delete_mother_meter_water.handler";
 import PatchMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/patch_mother_meter_electricity.handler";
 import GetMotherMeterElectricityhandler from "./infrastructure/handler/mother_meter_electricity/get_mother_meter_electricity.handler";
+import DeleteMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/delete_mother_meter_electricity.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -161,7 +162,9 @@ app.patch("/mother/meter/electricity/:id", async (req: Request, res: Response) =
 app.get("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
   await GetMotherMeterElectricityhandler({ req, res });
 });
-
+app.delete("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
+  await DeleteMotherMeterElectricityHandler({ req, res });
+})
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

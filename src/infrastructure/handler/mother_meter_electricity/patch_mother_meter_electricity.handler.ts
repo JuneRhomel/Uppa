@@ -30,7 +30,7 @@ export default async function PatchMotherMeterElectricityHandler({ req, res }: A
             authModel,
             motherMeterElectricityEntity,
         });
-        return res.status(200).json(response);
+        return res.status(200).json("success");
     } catch (error) {
         return res.status(400).json(error);
     }
