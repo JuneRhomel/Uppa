@@ -31,6 +31,10 @@ import DeleteMotherMeterWaterHandler from "./infrastructure/handler/mother_meter
 import PatchMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/patch_mother_meter_electricity.handler";
 import GetMotherMeterElectricityhandler from "./infrastructure/handler/mother_meter_electricity/get_mother_meter_electricity.handler";
 import DeleteMotherMeterElectricityHandler from "./infrastructure/handler/mother_meter_electricity/delete_mother_meter_electricity.handler";
+import DeleteSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/delete_sub_meter_electricity.handler";
+import GetSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/get_sub_meter_electricity.handler";
+import PatchSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/patch_sub_meter_electricity.handler";
+import PostSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/post_sub_meter_electricity.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -159,12 +163,35 @@ app.post("/mother/meter/electricity", async (req: Request, res: Response) => {
 app.patch("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
   await PatchMotherMeterElectricityHandler({ req, res });
 });
+
 app.get("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
   await GetMotherMeterElectricityhandler({ req, res });
 });
+
 app.delete("/mother/meter/electricity/:id", async (req: Request, res: Response) => {
   await DeleteMotherMeterElectricityHandler({ req, res });
 })
+
+app.get("/sub/meter/electricity", async (req: Request, res: Response) => {
+  await GetSubMeterElectricityHandler({ req, res });
+});
+
+app.post("/sub/meter/electricity", async (req: Request, res: Response) => {
+  await PostSubMeterElectricityHandler({ req, res });
+});
+
+app.patch("/sub/meter/electricity/:id", async (req: Request, res: Response) => {
+  await PatchSubMeterElectricityHandler({ req, res });
+});
+
+app.get("/sub/meter/electricity/:id", async (req: Request, res: Response) => {
+  await GetSubMeterElectricityHandler({ req, res });
+});
+
+app.delete("/sub/meter/electricity/:id", async (req: Request, res: Response) => {
+  await DeleteSubMeterElectricityHandler({ req, res });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
