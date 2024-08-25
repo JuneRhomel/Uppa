@@ -12,7 +12,7 @@ export default function SqlQuery(query: string, params?: any[]): Promise<any> {
 
     return new Promise((resolve, reject) => {
         connection.query(query, params, (error: Error | null, results: any[]) => {
-            connection.end(); // Close connection after query execution
+            connection.end(); 
 
             if (error) {
                 console.error('SQL Query Error:', error);

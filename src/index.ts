@@ -47,13 +47,15 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+
   if (req.url !== "/auth") {
     VerifyToken({ req, res, next });
   } else {
     next();
   }
+
 });
+
 
 app.post("/auth", async (req: Request, res: Response) => {
   await PostAuthHandler({ req, res });

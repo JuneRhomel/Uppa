@@ -5,10 +5,10 @@ export default async function FailureMapperUtil(error: any) {
     if (error.code === "ER_DUP_ENTRY") {
         let keyMatch = error.sqlMessage.match(/for key '([^']+)'/);
         if (keyMatch) {
-            let duplicateKey = keyMatch[1]; // Extracting the key name
+            let duplicateKey = keyMatch[1]; 
             return new DuplicateFailure(duplicateKey);
         } else {
-            // Handle the case where the key couldn't be extracted
+            
             return new DuplicateFailure('unknown_key');
         }
     }
