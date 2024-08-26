@@ -35,6 +35,10 @@ import DeleteSubMeterElectricityHandler from "./infrastructure/handler/sub_meter
 import GetSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/get_sub_meter_electricity.handler";
 import PatchSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/patch_sub_meter_electricity.handler";
 import PostSubMeterElectricityHandler from "./infrastructure/handler/sub_meter_electricity/post_sub_meter_electricity.handler";
+import DeleteSubMeterWaterHandler from "./infrastructure/handler/sub_meter_water/delete_sub_meter_water.handler";
+import GetSubMeterWaterHandler from "./infrastructure/handler/sub_meter_water/get_sub_meter_water.handler";
+import PatchSubMeterWaterHandler from "./infrastructure/handler/sub_meter_water/patch_sub_meter_water.handler";
+import PostSubMeterWaterHandler from "./infrastructure/handler/sub_meter_water/post_sub_meter_water.handler";
 const { PORT } = require("./infrastructure/config/config");
 
 const cors = require("cors");
@@ -192,6 +196,26 @@ app.get("/sub/meter/electricity/:id", async (req: Request, res: Response) => {
 
 app.delete("/sub/meter/electricity/:id", async (req: Request, res: Response) => {
   await DeleteSubMeterElectricityHandler({ req, res });
+});
+
+app.get("/sub/meter/water", async (req: Request, res: Response) => {
+  await GetSubMeterWaterHandler({ req, res });
+});
+
+app.post("/sub/meter/water", async (req: Request, res: Response) => {
+  await PostSubMeterWaterHandler({ req, res });
+});
+
+app.patch("/sub/meter/water/:id", async (req: Request, res: Response) => {
+  await PatchSubMeterWaterHandler({ req, res });
+});
+
+app.get("/sub/meter/water/:id", async (req: Request, res: Response) => {
+  await GetSubMeterWaterHandler({ req, res });
+});
+
+app.delete("/sub/meter/water/:id", async (req: Request, res: Response) => {
+  await DeleteSubMeterWaterHandler({ req, res });
 });
 
 app.listen(port, () => {

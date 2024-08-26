@@ -5,18 +5,42 @@ import GetSubMeterElectricityListEntity from "../../../entity/sub_meter/sub_mete
 import Failure from "../../../failure/failure"
 import PaginationModel from "../../../../data/model/panigation/panigation.model"
 import GetSubMeterElectricityListUseCaseParams from "./interface/get_sub_meter_electricity_list_use_case.params"
+import GetTotalListRowsDataSource from "../../../../data/data_source/core/get_total_list_rows/get_total_list_rows.data_source"
+import SubMeterElectricityEntity from "../../../entity/sub_meter/sub_meter_electricity.entity"
+import SubMeterElectricityListEntity from "../../../entity/sub_meter/sub_meter_electricity_list.entity"
 
 export default async function GetSubMeterElectricityListUseCase({ authModel, paginationEntity }: GetSubMeterElectricityListUseCaseParams): Promise<Failure | GetSubMeterElectricityListEntity> {
     try {
-        const paginationModel = plainToInstance(PaginationModel, paginationEntity, {
+
+        const { search, filters, page, numberOfRows, columns, sortBy, sortOrder } =
+            paginationEntity;
+        const destructureColumns = columns ? columns.split(",") : [];
+        const destructureFilters = filters ? filters.split(",") : [];
+
+        const paginationModel = plainToInstance(PaginationModel, {
+            search,
+            page,
+            numberOfRows,
+            columns: destructureColumns,
+            sortBy,
+            sortOrder,
+            filters: destructureFilters,
+        });
+
+        const [totalRows, subMeterElectricity] = await Promise.all([
+            GetTotalListRowsDataSource({ database: authModel.accountCode, table: "sub_meter_water" }),
+            GetSubMeterElectricityListDataSource({ paginationModel, authModel }),
+        ])
+
+        if (totalRows instanceof Failure) return totalRows;
+        if (subMeterElectricity instanceof Failure) return subMeterElectricity;
+
+        const subMeterElectricityEntity = plainToInstance(SubMeterElectricityEntity, subMeterElectricity, {
             excludeExtraneousValues: true
         })
 
-        const response = await GetSubMeterElectricityListDataSource({ authModel, paginationModel })
+        return new SubMeterElectricityListEntity(subMeterElectricityEntity, totalRows)
 
-        if (response instanceof Failure) return response
-
-        return plainToInstance(GetSubMeterElectricityListEntity, response, { excludeExtraneousValues: true })
     } catch (error) {
         return FailureMapperUtil(error)
     }

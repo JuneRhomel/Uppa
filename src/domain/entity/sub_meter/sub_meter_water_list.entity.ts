@@ -2,7 +2,7 @@ import { Expose } from "class-transformer";
 import SubMeterWaterEntity from "./sub_meter_water.entity";
 
 
-export default class GetSubMeterWaterListEntity {
+export default class SubMeterWaterListEntity {
     @Expose()
     public subMeterWaters: SubMeterWaterEntity[];
 

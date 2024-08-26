@@ -1,6 +1,6 @@
 import AuthModel from "../../../../../data/model/auth/auth.model";
 
-export default interface GetSubMeterWaterUseCaseInterface {
+export default interface GetSubMeterWaterUseCaseParams {
     authModel: AuthModel,
     id: number
 }

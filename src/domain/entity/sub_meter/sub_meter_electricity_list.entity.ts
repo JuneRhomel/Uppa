@@ -2,7 +2,7 @@ import { Expose } from "class-transformer";
 import SubMeterElectricityEntity from "./sub_meter_electricity.entity";
 
 
-export default class GetSubMeterElectricityListEntity {
+export default class SubMeterElectricityListEntity {
     @Expose()
     public subMeterElectricities: SubMeterElectricityEntity[];
 

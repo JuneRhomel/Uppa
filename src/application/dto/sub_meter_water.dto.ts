@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer";
 import { IsNumber, IsOptional, IsString } from "class-validator";
 
-export default class SubMeterElectricityDto {
+export default class SubMeterWaterDto {
     @Expose()
     id: number | undefined;
 
@@ -21,6 +21,7 @@ export default class SubMeterElectricityDto {
         serialNumber: string,
         motherMeterId: number | undefined,
         unitId: number | undefined,
+
     ) {
         this.id = id;
         this.serialNumber = serialNumber;
