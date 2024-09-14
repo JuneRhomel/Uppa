@@ -1,5 +1,5 @@
+import AuthEntity from "../../../../entity/auth/auth.entity";
+
 export default interface PatchAuthUseCaseParams {
-    email: string;
-    password: string;
-    accountCode: string;
+    authEntity: AuthEntity
 }

@@ -1,4 +1,5 @@
-import { NextFunction,Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
+import AuthModel from "../../../../data/model/auth/auth.model";
 
 
 export default interface JwtTokenVerifyParams {
@@ -12,7 +13,7 @@ export default interface JwtTokenVerifyParams {
 declare global {
     namespace Express {
         interface Request {
-            userAuth?: any; 
+            userAuth: AuthModel;
         }
     }
 }

@@ -8,8 +8,8 @@ import PostAuthDataSourceParams from "./interface/post_auth_data_source.params";
 
 export default async function PostAuthDataSource({ email, password, accountCode }: PostAuthDataSourceParams): Promise<AuthResponseModel | Failure> {
     try {
-        const query = `SELECT id, firstname, lastname, email, account_code from uppa_accounts.account WHERE email = ? AND password = ? AND account_code = ?`
-        const params = [email, password, accountCode]
+        const query = `SELECT id, first_name, last_name, email from ${accountCode}.admin_users WHERE email = ? AND password = ?`
+        const params = [email, password]
 
         const result = await SqlQuery(query, params)
 
@@ -23,7 +23,7 @@ export default async function PostAuthDataSource({ email, password, accountCode 
             user.firstname,
             user.lastname,
             user.email,
-            user.account_code
+            accountCode
         )
     } catch (error) {
         return FailureMapperUtil(error)
